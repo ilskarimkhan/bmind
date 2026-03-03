@@ -415,88 +415,103 @@ body {
   background: linear-gradient(180deg, var(--deep-slate) 0%, var(--deep-slate-light) 100%);
 }
 
-.platforms-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 48px;
+/* ============================================
+   3D ROTATING CARDS (TEMPLATE 1)
+   ============================================ */
+.input-section .wrapper {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    margin-top: 40px;
 }
 
-.platform-card {
-  padding: 28px 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.input-section .inner {
+    --w: 220px;
+    --h: 300px;
+    --translateZ: calc((var(--w) + var(--h)) + 150px);
+    --rotateX: -10deg;
+    --perspective: 2000px;
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    z-index: 2;
+    transform-style: preserve-3d;
+    transform: perspective(var(--perspective));
+    animation: rotating 30s linear infinite;
 }
 
-.platform-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 18px;
-  font-size: 1.4rem;
+@keyframes rotating {
+    from {
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+    }
+    to {
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
+    }
 }
 
-.platform-icon.whatsapp {
-  background: rgba(37, 211, 102, 0.12);
-  color: var(--whatsapp);
+.input-section .inner:hover {
+    animation-play-state: paused;
 }
 
-.platform-icon.telegram {
-  background: rgba(42, 171, 238, 0.12);
-  color: var(--telegram);
+.input-section .card {
+    position: absolute;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    inset: 0;
+    transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+    transition: var(--transition);
 }
 
-.platform-icon.gmail {
-  background: rgba(234, 67, 53, 0.12);
-  color: var(--gmail);
+.input-section .card:hover {
+    box-shadow: 0 0 30px rgba(var(--color-card), 0.3);
+    border-color: rgba(var(--color-card), 0.5);
+    background: rgba(var(--color-card), 0.05);
 }
 
-.platform-icon.slack {
-  background: rgba(224, 30, 90, 0.12);
-  color: var(--slack);
+.input-section .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.platform-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 8px;
+.input-section .card .platform-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 0 15px 0;
+    background: rgba(var(--color-card), 0.1);
+    color: rgb(var(--color-card));
 }
 
-.platform-desc {
-  font-size: 0.82rem;
-  color: var(--soft-silver);
-  line-height: 1.5;
+.input-section .card .platform-name {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
 }
 
-.message-bubble {
-  margin-top: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 12px 14px;
-  text-align: left;
-  font-size: 0.78rem;
-  color: var(--soft-silver);
-  line-height: 1.5;
-  position: relative;
+.input-section .card .platform-desc {
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
 }
 
-.message-bubble::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 20px;
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  transform: rotate(45deg);
+.input-section .card .message-bubble {
+    font-size: 0.7rem;
+    padding: 10px;
+    margin-top: auto;
+    background: rgba(var(--color-card), 0.05);
+    border-color: rgba(var(--color-card), 0.15);
 }
 
 /* ============================================
