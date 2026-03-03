@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Bmind — Your productivity AI that transforms messages from WhatsApp, Telegram, Gmail, and Slack into actionable calendar events, study cards, and smart reminders.">
+  <title>Bmind — Calm Intelligence for Your Digital Life</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================================ BACKGROUND ================================ -->
+  <canvas id="antigravity-bg"></canvas>
+
+  <!-- ================================ NAVBAR ================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        <div class="brand-icon">B</div>
+        <span class="brand-name">Bmind</span>
+      </a>
+      <ul class="navbar-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#" class="btn btn-primary">Get Early Access</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================ HERO ================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient-orb orb-1"></div>
+      <div class="hero-gradient-orb orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Calm Intelligence — AI for Productivity
+      </div>
+      <h1 class="hero-title">
+        Your Messages.<br>
+        Your Schedule.<br>
+        <span class="highlight">Intelligently Connected.</span>
+      </h1>
+      <p class="hero-description">
+        Bmind reads your conversations across WhatsApp, Telegram, Gmail, and Slack — and transforms them into calendar
+        events, study cards, and smart reminders. Automatically. Privately.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+          Start Free Trial
+        </a>
+        <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value">10K+</div>
+          <div class="hero-stat-label">Messages Analyzed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">98%</div>
+          <div class="hero-stat-label">Event Accuracy</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">256-bit</div>
+          <div class="hero-stat-label">Encryption</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ MESSAGE INPUTS ================================ -->
+  <section class="section input-section" id="features">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label reveal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          Comprehensive Data Input
+        </div>
+        <h2 class="section-title reveal">The Message Input</h2>
+        <p class="section-subtitle mx-auto reveal">
+          We connect to the platforms where your life happens — and extract the signals that matter.
+        </p>
+      </div>
+
+      <div class="platforms-grid">
+        <!-- WhatsApp -->
+        <div class="glass-card platform-card reveal">
+          <div class="platform-icon whatsapp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+          </div>
+          <div class="platform-name">WhatsApp</div>
+          <div class="platform-desc">Group chats & personal messages analyzed for events and deadlines</div>
+          <div class="message-bubble">
+            "Hey, our study group meets Thursday at 5pm in Room 204. Don't forget to bring the calculus notes! 📚"
+          </div>
+        </div>
+
+        <!-- Telegram -->
+        <div class="glass-card platform-card reveal">
+          <div class="platform-icon telegram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+          </div>
+          <div class="platform-name">Telegram</div>
+          <div class="platform-desc">Channel updates and direct messages scanned for actionable items</div>
+          <div class="message-bubble">
+            "Reminder: Project deadline is March 15. Submit the final report through the portal by 11:59 PM."
+          </div>
+        </div>
+
+        <!-- Gmail -->
+        <div class="glass-card platform-card reveal">
+          <div class="platform-icon gmail">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+            </svg>
+          </div>
+          <div class="platform-name">Gmail</div>
+          <div class="platform-desc">Email threads parsed for meeting invites, bills, and important dates</div>
+          <div class="message-bubble">
+            "Your electricity bill of $87.50 is due on March 10. Click here to pay online or set up autopay."
+          </div>
+        </div>
+
+        <!-- Slack -->
+        <div class="glass-card platform-card reveal">
+          <div class="platform-icon slack">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
+            </svg>
+          </div>
+          <div class="platform-name">Slack</div>
+          <div class="platform-desc">Workspace channels monitored for task assignments and stand-up items</div>
+          <div class="message-bubble">
+            "#team-standup: @you Please review the API docs before tomorrow's sprint planning at 10:00 AM."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ NEURAL CORE ================================ -->
+  <section class="section neural-section" id="how-it-works">
+    <div class="container">
+      <div class="section-label reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4M12 8h.01" />
+        </svg>
+        Intelligent Neural Core
+      </div>
+      <h2 class="section-title reveal">The Brain Behind the Magic</h2>
+      <p class="section-subtitle mx-auto reveal">
+        Our NLP engine processes your messages in real-time, matching goals, extracting entities, and building your
+        personal knowledge graph.
+      </p>
+
+      <div class="neural-core-container reveal">
+        <!-- Input Stack -->
+        <div class="neural-input-stack">
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: var(--whatsapp);"></span>
+            WhatsApp Messages
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: var(--telegram);"></span>
+            Telegram Chats
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: var(--gmail);"></span>
+            Gmail Threads
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: var(--slack);"></span>
+            Slack Channels
+          </div>
+        </div>
+
+        <!-- Connection Lines & Particles -->
+        <div class="connection-line left"></div>
+        <div class="particle left-1"></div>
+        <div class="particle left-2"></div>
+
+        <!-- Core Orb -->
+        <div class="neural-core-orb">
+          <div class="core-label">Neural Core</div>
+          <div class="core-title">NLP Engine</div>
+          <div style="font-size: 0.72rem; color: var(--soft-silver); margin-top: 6px;">Goal Matching</div>
+        </div>
+
+        <!-- Connection Lines & Particles -->
+        <div class="connection-line right"></div>
+        <div class="particle right-1"></div>
+        <div class="particle right-2"></div>
+
+        <!-- Output Stack -->
+        <div class="neural-output-stack">
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: var(--electric-indigo);"></span>
+            Calendar Events
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: #22d3ee;"></span>
+            Study Cards
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: #fbbf24;"></span>
+            Smart Reminders
+          </div>
+          <div class="glass-card neural-chip">
+            <span class="chip-dot" style="background: #4ade80;"></span>
+            Recommendations
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ TEMPORAL BOUNDARIES ================================ -->
+  <section class="section temporal-section">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label reveal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          User Control
+        </div>
+        <h2 class="section-title reveal">Temporal Boundaries</h2>
+        <p class="section-subtitle mx-auto reveal">
+          You decide how far back Bmind looks. Full control over your data analysis scope — per platform, per timeframe.
+        </p>
+      </div>
+
+      <div class="glass-card temporal-panel reveal">
+        <div class="temporal-row">
+          <div class="temporal-row-left">
+            <div class="temporal-platform-dot" style="background: var(--whatsapp);"></div>
+            <span class="temporal-platform-name">WhatsApp</span>
+          </div>
+          <span class="temporal-range">Last 7 days</span>
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="temporal-row">
+          <div class="temporal-row-left">
+            <div class="temporal-platform-dot" style="background: var(--telegram);"></div>
+            <span class="temporal-platform-name">Telegram</span>
+          </div>
+          <span class="temporal-range">Last 30 days</span>
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="temporal-row">
+          <div class="temporal-row-left">
+            <div class="temporal-platform-dot" style="background: var(--gmail);"></div>
+            <span class="temporal-platform-name">Gmail</span>
+          </div>
+          <span class="temporal-range">Last 14 days</span>
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="temporal-row">
+          <div class="temporal-row-left">
+            <div class="temporal-platform-dot" style="background: var(--slack);"></div>
+            <span class="temporal-platform-name">Slack</span>
+          </div>
+          <span class="temporal-range">Last 7 days</span>
+          <label class="toggle">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="time-slider-container">
+          <div class="time-slider-label">
+            <span>Global Analysis Window</span>
+            <span id="slider-value">14 days</span>
+          </div>
+          <input type="range" class="time-slider" id="time-slider" min="1" max="90" value="14">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ ENHANCED OUTPUTS ================================ -->
+  <section class="section outputs-section" id="outputs">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label reveal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          Enhanced Outputs
+        </div>
+        <h2 class="section-title reveal">From Noise to Action</h2>
+        <p class="section-subtitle mx-auto reveal">
+          Every message is distilled into three powerful output categories — so nothing important slips through the
+          cracks.
+        </p>
+      </div>
+
+      <div class="outputs-grid">
+        <!-- Calendar Events -->
+        <div class="glass-card output-card calendar reveal">
+          <div class="output-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          <div class="output-card-title">Calendar Events</div>
+          <div class="output-card-desc">Automatically extracted and structured events from your conversations, ready to
+            sync.</div>
+
+          <div class="mini-event">
+            <div class="mini-event-header">
+              <span class="mini-event-title">Study Group — Room 204</span>
+              <span class="mini-event-time">Thu 5:00 PM</span>
+            </div>
+            <div class="mini-event-source">📱 WhatsApp • "Calculus study group"</div>
+          </div>
+          <div class="mini-event">
+            <div class="mini-event-header">
+              <span class="mini-event-title">Sprint Planning</span>
+              <span class="mini-event-time">Tue 10:00 AM</span>
+            </div>
+            <div class="mini-event-source">💬 Slack • #team-standup</div>
+          </div>
+        </div>
+
+        <!-- Smart Study Cards -->
+        <div class="glass-card output-card study reveal">
+          <div class="output-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </div>
+          <div class="output-card-title">Smart Study Cards</div>
+          <div class="output-card-desc">Key concepts from your conversations auto-generated as flashcards for retention.
+          </div>
+
+          <div class="mini-study">
+            <div class="mini-study-q">Q: What is the Chain Rule?</div>
+            <div class="mini-study-a">The derivative of a composite function f(g(x)) equals f'(g(x)) · g'(x).</div>
+            <span class="mini-study-tag">Calculus • Auto-generated</span>
+          </div>
+          <div class="mini-study">
+            <div class="mini-study-q">Q: REST API Best Practices?</div>
+            <div class="mini-study-a">Use proper HTTP methods, version your API, and return meaningful status codes.
+            </div>
+            <span class="mini-study-tag">API Design • From Slack</span>
+          </div>
+        </div>
+
+        <!-- Smart Reminders -->
+        <div class="glass-card output-card reminders reveal">
+          <div class="output-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </div>
+          <div class="output-card-title">Smart Reminders</div>
+          <div class="output-card-desc">Prioritized notifications for bills, deadlines, and personalized study
+            recommendations.</div>
+
+          <div class="mini-reminder">
+            <span class="reminder-priority high"></span>
+            <span class="reminder-text">Pay electricity bill — $87.50</span>
+            <span class="reminder-due">Mar 10</span>
+          </div>
+          <div class="mini-reminder">
+            <span class="reminder-priority high"></span>
+            <span class="reminder-text">Submit final project report</span>
+            <span class="reminder-due">Mar 15</span>
+          </div>
+          <div class="mini-reminder">
+            <span class="reminder-priority medium"></span>
+            <span class="reminder-text">Review API docs for sprint</span>
+            <span class="reminder-due">Tomorrow</span>
+          </div>
+          <div class="mini-reminder">
+            <span class="reminder-priority low"></span>
+            <span class="reminder-text">Study: Limits & Continuity</span>
+            <span class="reminder-due">Suggested</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ BENTO GRID ================================ -->
+  <section class="section bento-section" id="privacy">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label reveal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg>
+          Architecture Deep Dive
+        </div>
+        <h2 class="section-title reveal">Built for Trust & Intelligence</h2>
+        <p class="section-subtitle mx-auto reveal">
+          Under the hood, Bmind is engineered with privacy-first principles and intelligent systems that learn your
+          world.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Contextual Memory -->
+        <div class="glass-card bento-card span-2 reveal">
+          <div class="bento-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+            </svg>
+          </div>
+          <div class="bento-card-title">Contextual Memory</div>
+          <div class="bento-card-desc">A living topic graph that connects your conversations, interests, and goals.
+            Bmind remembers context so you don't have to — building a personalized knowledge network over time.</div>
+          <div class="topic-graph">
+            <div class="topic-node n1">Calculus</div>
+            <div class="topic-node n2">Study Group</div>
+            <div class="topic-node n3">Sprint Planning</div>
+            <div class="topic-node n4">Billing</div>
+            <div class="topic-node n5">API Design</div>
+            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+              <line x1="60" y1="25" x2="130" y2="62" stroke="rgba(99,102,241,0.15)" stroke-width="1" />
+              <line x1="155" y1="62" x2="220" y2="32" stroke="rgba(6,182,212,0.15)" stroke-width="1" />
+              <line x1="80" y1="95" x2="130" y2="68" stroke="rgba(34,197,94,0.15)" stroke-width="1" />
+              <line x1="200" y1="85" x2="220" y2="38" stroke="rgba(168,85,247,0.15)" stroke-width="1" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Notification Filtering -->
+        <div class="glass-card bento-card reveal">
+          <div class="bento-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #f87171;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+          </div>
+          <div class="bento-card-title">Smart Notification Filtering</div>
+          <div class="bento-card-desc">Separates signal from noise. Only the messages that matter reach you — the rest
+            is silently categorized.</div>
+          <div class="filter-bars">
+            <div>
+              <div class="filter-label"><span>Important</span><span>85%</span></div>
+              <div class="filter-bar">
+                <div class="filter-bar-fill f1"></div>
+              </div>
+            </div>
+            <div>
+              <div class="filter-label"><span>Informational</span><span>60%</span></div>
+              <div class="filter-bar">
+                <div class="filter-bar-fill f2"></div>
+              </div>
+            </div>
+            <div>
+              <div class="filter-label"><span>Filtered Out</span><span>95%</span></div>
+              <div class="filter-bar">
+                <div class="filter-bar-fill f3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- E2E Encryption -->
+        <div class="glass-card bento-card reveal">
+          <div class="bento-card-icon" style="background: rgba(34, 197, 94, 0.1); color: #4ade80;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="bento-card-title">End-to-End Encryption</div>
+          <div class="bento-card-desc">Your messages are never stored in plaintext. All processing happens within
+            encrypted pipelines using 256-bit AES encryption.</div>
+          <div class="shield-graphic">🛡️</div>
+        </div>
+
+        <!-- Categorized Dashboard -->
+        <div class="glass-card bento-card span-2 reveal">
+          <div class="bento-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #fbbf24;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="21" x2="9" y2="9" />
+            </svg>
+          </div>
+          <div class="bento-card-title">Full Categorized Dashboard</div>
+          <div class="bento-card-desc">A unified command center showing everything at a glance — events, cards,
+            reminders, and analytics — organized by category and priority.</div>
+          <div class="mini-dashboard">
+            <div class="mini-dash-item">
+              <div class="mini-dash-value">12</div>
+              <div class="mini-dash-label">Events This Week</div>
+            </div>
+            <div class="mini-dash-item">
+              <div class="mini-dash-value">34</div>
+              <div class="mini-dash-label">Study Cards</div>
+            </div>
+            <div class="mini-dash-item">
+              <div class="mini-dash-value">5</div>
+              <div class="mini-dash-label">Pending Bills</div>
+            </div>
+            <div class="mini-dash-item">
+              <div class="mini-dash-value">98%</div>
+              <div class="mini-dash-label">Accuracy Score</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Manifesto mini-card -->
+        <div class="glass-card bento-card span-2 reveal">
+          <div class="bento-card-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <div class="bento-card-title">Our Privacy Manifesto</div>
+          <div class="bento-card-desc">We believe your data belongs to you — always. Bmind processes locally when
+            possible, never sells data, and gives you full control to delete everything at any time. Transparency isn't
+            a feature — it's our foundation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FOOTER ================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">
+        <div class="brand-icon">B</div>
+        <span class="brand-name">Bmind</span>
+      </div>
+      <p class="footer-desc">
+        Calm Intelligence for your digital life. Transform the noise into action — privately and effortlessly.
+      </p>
+      <ul class="footer-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 Bmind. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
