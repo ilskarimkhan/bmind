@@ -243,4 +243,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- SETUP SCREEN LOGIC ---
+    const setupScreen = document.getElementById('setup-screen');
+    const startTrialBtn = document.getElementById('start-trial-btn');
+    const finishSetupBtn = document.getElementById('finish-setup');
+    const finalizeActions = document.querySelector('.finalize-setup');
+
+    if (startTrialBtn && setupScreen) {
+        startTrialBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setupScreen.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+    }
+
+    if (setupScreen) {
+        const connectButtons = setupScreen.querySelectorAll('.connect-btn');
+        let connectedCount = 0;
+
+        connectButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tile = btn.closest('.tactile-tile');
+                const extractingContainer = tile.querySelector('.extracting-container');
+                const progressFill = tile.querySelector('.setup-progress-fill');
+                const successCheck = tile.querySelector('.success-check');
+
+                // Start Loading State
+                btn.classList.add('loading');
+                btn.textContent = 'Connecting...';
+
+                // Show Extraction Progress
+                setTimeout(() => {
+                    btn.style.display = 'none';
+                    extractingContainer.style.display = 'flex';
+
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += Math.random() * 15;
+                        if (progress >= 100) {
+                            progress = 100;
+                            clearInterval(interval);
+
+                            // Success State
+                            setTimeout(() => {
+                                extractingContainer.style.display = 'none';
+                                successCheck.style.display = 'flex';
+                                tile.classList.add('connected');
+
+                                connectedCount++;
+                                if (connectedCount >= 1) {
+                                    finalizeActions.classList.add('visible');
+                                }
+                            }, 500);
+                        }
+                        progressFill.style.width = progress + '%';
+                    }, 150);
+                }, 600);
+            });
+        });
+    }
+
+    if (finishSetupBtn && setupScreen) {
+        finishSetupBtn.addEventListener('click', () => {
+            window.location.href = 'dashboard.html';
+        });
+    }
+
 });

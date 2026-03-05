@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bmind Dashboard — Your intelligent productivity command center. View deadlines, actions, and personalized learning.">
+    <title>Bmind — Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-shell">
+
+        <!-- ================================ SIDEBAR ================================ -->
+        <aside class="sidebar" id="sidebar">
+            <a href="index.html" class="sidebar-brand">
+                <div class="sidebar-brand-icon">B</div>
+                <span class="sidebar-brand-name">Bmind</span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-section="pulse">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    <span>Pulse</span>
+                </a>
+                <a href="#" class="sidebar-link" data-section="library">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    <span>Library</span>
+                </a>
+                <a href="#" class="sidebar-link" data-section="archive">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                    </svg>
+                    <span>Archive</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <a href="#" class="sidebar-link" data-section="connections">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    <span>Connections</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar">R</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Rinat</span>
+                        <span class="sidebar-user-plan">Free Trial</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ================================ MAIN CONTENT ================================ -->
+        <main class="main-content" id="main-content">
+
+            <!-- Focus Feed Hero Card -->
+            <div class="hero-card" id="hero-card">
+                <div class="hero-greeting">
+                    <span class="wave">👋</span> Good Morning
+                </div>
+                <h1 class="hero-title">Good morning, Rinat.</h1>
+                <p class="hero-subtitle">Here is your priority for today. You have <strong
+                        style="color: var(--white);">3 urgent
+                        deadlines</strong> and <strong style="color: var(--white);">5 pending actions</strong> extracted
+                    from your
+                    messages.</p>
+                <div class="hero-priority">
+                    <div class="priority-dot"></div>
+                    <span class="priority-text">Submit Final Project Report</span>
+                    <span class="priority-time">Due in 6 hours</span>
+                </div>
+            </div>
+
+            <!-- Deadline Rail -->
+            <div class="deadline-rail" id="deadline-rail">
+                <div class="rail-header">
+                    <h2 class="rail-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        Deadline Rail
+                    </h2>
+                    <span class="rail-count">6 deadlines this week</span>
+                </div>
+                <div class="rail-scroll">
+                    <!-- Urgent: 24h -->
+                    <div class="deadline-card urgent">
+                        <div class="deadline-tag urgent">
+                            <span class="deadline-tag-dot"></span>
+                            Within 24h
+                        </div>
+                        <div class="deadline-title">Submit Final Project Report</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Today, 11:59 PM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--telegram);"></span>
+                            Telegram • Prof. Khan
+                        </div>
+                    </div>
+
+                    <div class="deadline-card urgent">
+                        <div class="deadline-tag urgent">
+                            <span class="deadline-tag-dot"></span>
+                            Within 24h
+                        </div>
+                        <div class="deadline-title">Pay Electricity Bill — $87.50</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Tomorrow, 12:00 AM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--gmail);"></span>
+                            Gmail • Utility Co.
+                        </div>
+                    </div>
+
+                    <!-- Amber: 48h -->
+                    <div class="deadline-card soon">
+                        <div class="deadline-tag soon">
+                            <span class="deadline-tag-dot"></span>
+                            Within 48h
+                        </div>
+                        <div class="deadline-title">Sprint Planning Presentation</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Friday, 10:00 AM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--slack);"></span>
+                            Slack • #team-standup
+                        </div>
+                    </div>
+
+                    <div class="deadline-card soon">
+                        <div class="deadline-tag soon">
+                            <span class="deadline-tag-dot"></span>
+                            Within 48h
+                        </div>
+                        <div class="deadline-title">Review API Documentation</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Friday, 5:00 PM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--slack);"></span>
+                            Slack • @dev-lead
+                        </div>
+                    </div>
+
+                    <!-- Green: OK -->
+                    <div class="deadline-card ok">
+                        <div class="deadline-tag ok">
+                            <span class="deadline-tag-dot"></span>
+                            This Week
+                        </div>
+                        <div class="deadline-title">Study Group — Calculus Review</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Saturday, 3:00 PM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--whatsapp);"></span>
+                            WhatsApp • Study Squad
+                        </div>
+                    </div>
+
+                    <div class="deadline-card ok">
+                        <div class="deadline-tag ok">
+                            <span class="deadline-tag-dot"></span>
+                            This Week
+                        </div>
+                        <div class="deadline-title">Dentist Appointment</div>
+                        <div class="deadline-meta">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            Sunday, 11:00 AM
+                        </div>
+                        <div class="deadline-source">
+                            <span class="deadline-source-dot" style="background: var(--gmail);"></span>
+                            Gmail • Dr. Ahmed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-Column Layout -->
+            <div class="columns-grid">
+                <!-- Left Column: Upcoming Actions -->
+                <div class="column-panel" id="actions-panel">
+                    <div class="column-header">
+                        <h2 class="column-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                            Upcoming Actions
+                        </h2>
+                        <span class="column-badge">5 pending</span>
+                    </div>
+                    <div class="action-list">
+                        <div class="action-item" id="action-1">
+                            <div class="action-checkbox" onclick="toggleAction(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="action-body">
+                                <div class="action-title">Finalize project report and submit via portal</div>
+                                <div class="action-desc">Extracted from a message: "Deadline March 15. Submit via
+                                    portal."</div>
+                                <div class="action-footer">
+                                    <span class="action-source-tag">
+                                        <span class="dot" style="background: var(--telegram);"></span>
+                                        Telegram
+                                    </span>
+                                    <span class="action-time-tag urgent">Due today</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-item" id="action-2">
+                            <div class="action-checkbox" onclick="toggleAction(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="action-body">
+                                <div class="action-title">Pay electricity bill — $87.50</div>
+                                <div class="action-desc">Extracted from email: "Bill of $87.50 is due on March 10."
+                                </div>
+                                <div class="action-footer">
+                                    <span class="action-source-tag">
+                                        <span class="dot" style="background: var(--gmail);"></span>
+                                        Gmail
+                                    </span>
+                                    <span class="action-time-tag urgent">Due tomorrow</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-item" id="action-3">
+                            <div class="action-checkbox" onclick="toggleAction(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="action-body">
+                                <div class="action-title">Prepare slides for sprint planning meeting</div>
+                                <div class="action-desc">Mentioned in #team-standup: "Need demo slides before Friday
+                                    standup."</div>
+                                <div class="action-footer">
+                                    <span class="action-source-tag">
+                                        <span class="dot" style="background: var(--slack);"></span>
+                                        Slack
+                                    </span>
+                                    <span class="action-time-tag soon">In 2 days</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-item" id="action-4">
+                            <div class="action-checkbox" onclick="toggleAction(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="action-body">
+                                <div class="action-title">Review API documentation before sprint</div>
+                                <div class="action-desc">Dev lead messaged: "Review API docs before tomorrow."</div>
+                                <div class="action-footer">
+                                    <span class="action-source-tag">
+                                        <span class="dot" style="background: var(--slack);"></span>
+                                        Slack
+                                    </span>
+                                    <span class="action-time-tag soon">In 2 days</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-item" id="action-5">
+                            <div class="action-checkbox" onclick="toggleAction(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="action-body">
+                                <div class="action-title">Bring notes to study group session</div>
+                                <div class="action-desc">From study group: "Study group at 5pm. Bring notes! 📚"</div>
+                                <div class="action-footer">
+                                    <span class="action-source-tag">
+                                        <span class="dot" style="background: var(--whatsapp);"></span>
+                                        WhatsApp
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Recommended Mastery -->
+                <div class="column-panel" id="mastery-panel">
+                    <div class="column-header">
+                        <h2 class="column-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            Recommended Mastery
+                        </h2>
+                        <span class="column-badge">AI-curated</span>
+                    </div>
+                    <div class="mastery-list">
+                        <a href="#" class="mastery-card">
+                            <div class="mastery-icon" style="background: rgba(99,102,241,0.12); color: #818cf8;">📐
+                            </div>
+                            <div class="mastery-body">
+                                <div class="mastery-title">Calculus: Chain Rule Deep Dive</div>
+                                <div class="mastery-desc">Linked to your upcoming study group and midterm deadline.
+                                </div>
+                                <div class="mastery-progress-bar">
+                                    <div class="mastery-progress-fill"
+                                        style="width: 65%; background: var(--electric-indigo);"></div>
+                                </div>
+                                <div class="mastery-meta">
+                                    <span class="mastery-tag">From WhatsApp Chat</span>
+                                    <span class="mastery-percent">65%</span>
+                                </div>
+                            </div>
+                            <div class="mastery-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="mastery-card">
+                            <div class="mastery-icon" style="background: rgba(34,197,94,0.12); color: #4ade80;">📊</div>
+                            <div class="mastery-body">
+                                <div class="mastery-title">REST API Best Practices</div>
+                                <div class="mastery-desc">Connected to your sprint planning and API review tasks.</div>
+                                <div class="mastery-progress-bar">
+                                    <div class="mastery-progress-fill" style="width: 30%; background: var(--green-ok);">
+                                    </div>
+                                </div>
+                                <div class="mastery-meta">
+                                    <span class="mastery-tag">From Slack Context</span>
+                                    <span class="mastery-percent">30%</span>
+                                </div>
+                            </div>
+                            <div class="mastery-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="mastery-card">
+                            <div class="mastery-icon" style="background: rgba(245,158,11,0.12); color: #fbbf24;">💰
+                            </div>
+                            <div class="mastery-body">
+                                <div class="mastery-title">Smart Budgeting Fundamentals</div>
+                                <div class="mastery-desc">Triggered by your recurring bill reminders and payment
+                                    patterns.</div>
+                                <div class="mastery-progress-bar">
+                                    <div class="mastery-progress-fill"
+                                        style="width: 50%; background: var(--amber-soon);"></div>
+                                </div>
+                                <div class="mastery-meta">
+                                    <span class="mastery-tag">From Gmail Receipts</span>
+                                    <span class="mastery-percent">50%</span>
+                                </div>
+                            </div>
+                            <div class="mastery-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="mastery-card">
+                            <div class="mastery-icon"
+                                style="background: rgba(168,230,207,0.12); color: var(--soft-mint);">🧠</div>
+                            <div class="mastery-body">
+                                <div class="mastery-title">Effective Conflict Resolution</div>
+                                <div class="mastery-desc">Based on team dynamics detected in your Slack conversations.
+                                </div>
+                                <div class="mastery-progress-bar">
+                                    <div class="mastery-progress-fill"
+                                        style="width: 85%; background: var(--soft-mint);"></div>
+                                </div>
+                                <div class="mastery-meta">
+                                    <span class="mastery-tag">Recommended Skill</span>
+                                    <span class="mastery-percent">85%</span>
+                                </div>
+                            </div>
+                            <div class="mastery-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
