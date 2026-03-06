@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bmind Library — Your synthesized knowledge base.">
+    <title>Bmind — Library</title>
+    <!-- Use dashboard.css for global shell/sidebar, then library.css for specific vault styles -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="library.css">
+</head>
+
+<body>
+    <div class="dashboard-shell">
+
+        <!-- ================================ SIDEBAR ================================ -->
+        <aside class="sidebar" id="sidebar">
+            <a href="index.html" class="sidebar-brand">
+                <div class="sidebar-brand-icon">B</div>
+                <span class="sidebar-brand-name">Bmind</span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link" data-section="pulse">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    <span>Pulse</span>
+                </a>
+                <a href="library.html" class="sidebar-link active" data-section="library">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    <span>Library</span>
+                </a>
+                <a href="archive.html" class="sidebar-link" data-section="archive">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                    </svg>
+                    <span>Archive</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <a href="#" class="sidebar-link" data-section="connections">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    <span>Connections</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar">R</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Rinat</span>
+                        <span class="sidebar-user-plan">Free Trial</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ================================ MAIN CONTENT (LIBRARY) ================================ -->
+        <main class="main-content" id="main-content">
+            
+            <!-- Global Top Search Bar -->
+            <div class="global-search-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="global-search-input" placeholder="Search your thoughts, messages, and lessons...">
+                <div class="search-cmd-hint">⌘K</div>
+            </div>
+
+            <!-- Library Header -->
+            <header class="library-header">
+                <h1 class="library-title">Cognitive Vault</h1>
+                <p class="library-subtitle">Your synthesized knowledge base.</p>
+            </header>
+
+            <div class="library-layout">
+                <!-- LEFT COLUMN: Learning & Vault -->
+                <div class="vault-main-area">
+                    
+                    <!-- Section: Active Learning (Top Row) -->
+                    <section class="active-learning-section">
+                        <h2 class="section-title">In-Progress Mastery</h2>
+                        <div class="learning-carousel">
+                            
+                            <!-- Card 1 -->
+                            <div class="learning-card">
+                                <div class="card-thumbnail youtube-thumb">
+                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h3 class="learning-title">Mitosis Explained</h3>
+                                    <span class="learning-source">10 min video</span>
+                                </div>
+                                <div class="card-progress">
+                                    <div class="progress-ring-container">
+                                        <!-- Using CSS conic-gradient for progress -->
+                                        <div class="progress-ring" style="--progress: 65%;">
+                                            <span class="progress-text">65%</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-resume">Resume</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="learning-card">
+                                <div class="card-thumbnail article-thumb">
+                                    <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h3 class="learning-title">REST API Best Practices</h3>
+                                    <span class="learning-source">Medium Article</span>
+                                </div>
+                                <div class="card-progress">
+                                    <div class="progress-ring-container">
+                                        <div class="progress-ring" style="--progress: 30%;">
+                                            <span class="progress-text">30%</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-resume">Resume</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="learning-card">
+                                <div class="card-thumbnail course-thumb">
+                                    <svg class="course-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h3 class="learning-title">Chain Rule Deep Dive</h3>
+                                    <span class="learning-source">Coursera Module</span>
+                                </div>
+                                <div class="card-progress">
+                                    <div class="progress-ring-container">
+                                        <div class="progress-ring" style="--progress: 85%;">
+                                            <span class="progress-text">85%</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-resume">Resume</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Section: Smart Folders (Main Grid) -->
+                    <section class="smart-folders-section">
+                        <div class="section-header-row">
+                            <h2 class="section-title">Smart Folders</h2>
+                            <button class="btn-view-all">View All</button>
+                        </div>
+                        
+                        <div class="folders-grid">
+                            
+                            <!-- Folder 1 -->
+                            <div class="smart-folder folder-biology">
+                                <div class="folder-header">
+                                    <div class="neon-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <!-- DNA Strand Representation -->
+                                            <path d="M6 3v2a8 8 0 0 0 8 8v0a8 8 0 0 1 8 8v2"></path>
+                                            <path d="M18 3v2a8 8 0 0 1-8 8v0a8 8 0 0 0-8 8v2"></path>
+                                            <line x1="15" y1="5" x2="9" y2="5"></line>
+                                            <line x1="17" y1="10" x2="11" y2="10"></line>
+                                            <line x1="13" y1="14" x2="7" y2="14"></line>
+                                            <line x1="15" y1="19" x2="9" y2="19"></line>
+                                        </svg>
+                                    </div>
+                                    <span class="new-insights-badge">3 New Insights</span>
+                                </div>
+                                <div class="folder-footer">
+                                    <h3 class="folder-name">Biology</h3>
+                                    <span class="folder-meta">24 sources synthesized</span>
+                                </div>
+                            </div>
+
+                            <!-- Folder 2 -->
+                            <div class="smart-folder folder-work">
+                                <div class="folder-header">
+                                    <div class="neon-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                                        </svg>
+                                    </div>
+                                    <span class="new-insights-badge">1 New Insight</span>
+                                </div>
+                                <div class="folder-footer">
+                                    <h3 class="folder-name">Sprint Planning</h3>
+                                    <span class="folder-meta">18 sources synthesized</span>
+                                </div>
+                            </div>
+
+                            <!-- Folder 3 -->
+                            <div class="smart-folder folder-finance">
+                                <div class="folder-header">
+                                    <div class="neon-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 1v22"></path>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                        </svg>
+                                    </div>
+                                    <!-- No badge here to show variance -->
+                                </div>
+                                <div class="folder-footer">
+                                    <h3 class="folder-name">Personal Finance</h3>
+                                    <span class="folder-meta">8 sources synthesized</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Folder 4 -->
+                            <div class="smart-folder folder-general">
+                                <div class="folder-header">
+                                    <div class="neon-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                            <polyline points="2 17 12 22 22 17"></polyline>
+                                            <polyline points="2 12 12 17 22 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <span class="new-insights-badge">5 New Insights</span>
+                                </div>
+                                <div class="folder-footer">
+                                    <h3 class="folder-name">General Knowledge</h3>
+                                    <span class="folder-meta">42 sources synthesized</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- RIGHT COLUMN: Insight Stream (Sidebar) -->
+                <aside class="sidebar-right insight-stream">
+                    <div class="stream-header">
+                        <h2>Insight Stream</h2>
+                        <span class="live-pulse"></span>
+                    </div>
+                    
+                    <div class="briefs-feed">
+                        
+                        <!-- Brief 1 -->
+                        <div class="insight-brief brief-violet">
+                            <div class="brief-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="brief-content">
+                                <p class="brief-text">Recap: Your group project chat settled on Friday for the deadline.</p>
+                                <span class="brief-time">10 mins ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Brief 2 -->
+                        <div class="insight-brief brief-mint">
+                            <div class="brief-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="brief-content">
+                                <p class="brief-text">Note extracted from Gmail: Biology Midterm will cover Chapters 4-6 heavily.</p>
+                                <span class="brief-time">1 hour ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Brief 3 -->
+                        <div class="insight-brief brief-amber">
+                            <div class="brief-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="brief-content">
+                                <p class="brief-text">Detected a pattern: You typically focus best on complex math tasks before noon.</p>
+                                <span class="brief-time">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Brief 4 -->
+                        <div class="insight-brief brief-violet">
+                            <div class="brief-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                </svg>
+                            </div>
+                            <div class="brief-content">
+                                <p class="brief-text">Action added: Mom invited you to dinner on Sunday night.</p>
+                                <span class="brief-time">Yesterday</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </aside>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

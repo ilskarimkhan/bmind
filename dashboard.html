@@ -21,14 +21,14 @@
             </a>
 
             <nav class="sidebar-nav">
-                <a href="#" class="sidebar-link active" data-section="pulse">
+                <a href="dashboard.html" class="sidebar-link active" data-section="pulse">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                     </svg>
                     <span>Pulse</span>
                 </a>
-                <a href="#" class="sidebar-link" data-section="library">
+                <a href="library.html" class="sidebar-link" data-section="library">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -36,7 +36,7 @@
                     </svg>
                     <span>Library</span>
                 </a>
-                <a href="#" class="sidebar-link" data-section="archive">
+                <a href="archive.html" class="sidebar-link" data-section="archive">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="21 8 21 21 3 21 3 8" />
@@ -264,6 +264,57 @@
                 </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Bmind Context Widget -->
+            <div class="bmind-context-widget" id="contextWidget">
+                <div class="context-panel" id="contextPanel">
+                    <div class="context-header">
+                        <h3>Bmind Context</h3>
+                        <span class="context-badge">Active</span>
+                    </div>
+                    <div class="context-threads">
+                        <div class="thread-item priority-high">
+                            <span class="thread-icon email">
+                                <span class="dot" style="background: var(--gmail);"></span>
+                            </span>
+                            <div class="thread-content">
+                                <span class="thread-title">Email Notification: Prof. Chen</span>
+                                <span class="thread-detail">Exam Date Update</span>
+                            </div>
+                        </div>
+                        <div class="thread-item priority-normal">
+                            <span class="thread-icon telegram">
+                                <span class="dot" style="background: var(--telegram);"></span>
+                            </span>
+                            <div class="thread-content">
+                                <span class="thread-title">Telegram Chat: Study Group</span>
+                                <span class="thread-detail">Mitosis discussion</span>
+                            </div>
+                        </div>
+                        <div class="thread-item priority-low">
+                            <span class="thread-icon whatsapp">
+                                <span class="dot" style="background: var(--whatsapp);"></span>
+                            </span>
+                            <div class="thread-content">
+                                <span class="thread-title">WhatsApp: Mom</span>
+                                <span class="thread-detail">Weekend plans — low priority</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neural-cluster-trigger" id="neuralTrigger">
+                    <div class="node core"></div>
+                    <div class="node satellite sat-1"></div>
+                    <div class="node satellite sat-2"></div>
+                    <div class="node satellite sat-3"></div>
+                    <svg class="neural-connections" viewBox="0 0 60 60">
+                        <line x1="30" y1="30" x2="15" y2="15" />
+                        <line x1="30" y1="30" x2="45" y2="10" />
+                        <line x1="30" y1="30" x2="20" y2="45" />
+                    </svg>
                 </div>
             </div>
         </main>

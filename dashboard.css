@@ -1002,8 +1002,240 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE
+   BMIND CONTEXT WIDGET
    ============================================ */
+.bmind-context-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+/* --- Expandable Panel --- */
+.context-panel {
+    width: 340px;
+    background: linear-gradient(145deg, rgba(20, 20, 24, 0.95) 0%, rgba(30, 30, 36, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.1);
+    
+    /* Animation defaults */
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom right;
+}
+
+/* Expanded State */
+.bmind-context-widget.expanded .context-panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.context-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.context-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+}
+
+.context-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--soft-mint);
+    background: rgba(34, 197, 94, 0.15);
+    padding: 3px 8px;
+    border-radius: 100px;
+}
+
+.context-threads {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.thread-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.thread-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.thread-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.thread-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.thread-icon .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.thread-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.thread-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thread-detail {
+    font-size: 0.7rem;
+    color: var(--soft-silver);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Priority Styles */
+.priority-high {
+    border-left: 2px solid var(--gmail);
+    background: linear-gradient(90deg, rgba(234, 67, 53, 0.1), transparent);
+}
+.priority-high .thread-title { color: #fecaca; }
+
+.priority-normal {
+    border-left: 2px solid var(--telegram);
+}
+
+.priority-low {
+    opacity: 0.6;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+.priority-low .thread-title { color: var(--soft-silver); }
+
+/* --- Neural Cluster Trigger --- */
+.neural-cluster-trigger {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(30, 30, 36, 0.8) 0%, rgba(20, 20, 24, 0.9) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), inset 0 0 10px rgba(99, 102, 241, 0.2);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.neural-cluster-trigger:hover,
+.bmind-context-widget.expanded .neural-cluster-trigger {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6), inset 0 0 15px rgba(99, 102, 241, 0.4);
+    border-color: var(--electric-indigo);
+}
+
+/* The lines connecting nodes */
+.neural-connections {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.neural-connections line {
+    stroke: rgba(99, 102, 241, 0.4);
+    stroke-width: 1.5;
+    stroke-dasharray: 4;
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    from { stroke-dashoffset: 8; }
+    to { stroke-dashoffset: 0; }
+}
+
+/* The nodes */
+.node {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--electric-indigo-hover);
+    box-shadow: 0 0 8px var(--electric-indigo);
+    z-index: 2;
+}
+
+.node.core {
+    width: 12px;
+    height: 12px;
+    background: var(--electric-indigo);
+    animation: pulse-core 2s ease-in-out infinite alternate;
+}
+
+.node.satellite {
+    width: 6px;
+    height: 6px;
+    animation: pulse-sat 1.5s ease-in-out infinite alternate;
+}
+
+/* Positions matching the SVG lines */
+.node.sat-1 { top: 12px; left: 12px; animation-delay: 0.2s; }  /* matches 15,15 */
+.node.sat-2 { top: 7px; right: 12px; animation-delay: 0.5s; background: var(--soft-mint); box-shadow: 0 0 8px var(--soft-mint); } /* matches 45,10 */
+.node.sat-3 { bottom: 12px; left: 17px; animation-delay: 0.8s; background: var(--amber-soon); box-shadow: 0 0 8px var(--amber-soon); } /* matches 20,45 */
+
+@keyframes pulse-core {
+    0% { transform: scale(0.9); box-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
+    100% { transform: scale(1.1); box-shadow: 0 0 20px rgba(99, 102, 241, 1); }
+}
+
+@keyframes pulse-sat {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
 @media (max-width: 1024px) {
     .columns-grid {
         grid-template-columns: 1fr;

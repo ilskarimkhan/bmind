@@ -19,9 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            sidebarLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href === '') {
+                e.preventDefault();
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
         });
     });
 
@@ -56,9 +59,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     }
 
-});
+    // --- Bmind Context Widget Toggle ---
+    const contextWidget = document.getElementById('contextWidget');
+    const neuralTrigger = document.getElementById('neuralTrigger');
 
-// --- Toggle Action Checkbox ---
+    if (contextWidget && neuralTrigger) {
+        // Toggle on click
+        neuralTrigger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent document click from immediately closing it
+            contextWidget.classList.toggle('expanded');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (contextWidget.classList.contains('expanded') && !contextWidget.contains(e.target)) {
+                contextWidget.classList.remove('expanded');
+            }
+        });
+        
+        // Prevent clicks inside panel from closing it
+        contextWidget.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+});
 function toggleAction(checkbox) {
     const actionItem = checkbox.closest('.action-item');
     checkbox.classList.toggle('checked');

@@ -1,0 +1,570 @@
+/* ============================================
+   BMIND ARCHIVE SPECIFIC STYLES
+   "Frosted Obsidian" Aesthetic
+   ============================================ */
+
+:root {
+    --archive-bg: #080A0E; /* Darker, muted obsidian */
+    --archive-panel: rgba(20, 24, 34, 0.4);
+    --archive-border: rgba(255, 255, 255, 0.05);
+    
+    /* Foil Gradients */
+    --gold-foil: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    --silver-foil: linear-gradient(135deg, #c0c0c0, #e8e8e8, #a0a0a0, #f5f5f5, #909090);
+    --bronze-foil: linear-gradient(135deg, #cd7f32, #f3d0a9, #a05a22, #ecd0b5, #8a4b1c);
+}
+
+/* Base override for archive page */
+body {
+    background-color: var(--archive-bg);
+}
+
+/* ============================================
+   ARCHIVE HEADER & CONTROL BAR
+   ============================================ */
+.archive-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.archive-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.archive-subtitle {
+    font-size: 1rem;
+    color: var(--soft-silver-light);
+}
+
+.control-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: var(--archive-panel);
+    border: 1px solid var(--archive-border);
+    padding: 12px 24px;
+    border-radius: 100px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: fit-content;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-label {
+    font-size: 0.85rem;
+    color: var(--soft-silver);
+    font-weight: 500;
+}
+
+.pill-group {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-pill {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--soft-silver);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-pill:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.filter-pill.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--archive-border);
+}
+
+/* ============================================
+   ARCHIVE LAYOUT
+   ============================================ */
+.archive-layout {
+    display: flex;
+    gap: 48px;
+}
+
+.timeline-area {
+    flex: 1;
+    max-width: 500px;
+}
+
+.trophy-area {
+    flex: 1.5;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 24px;
+}
+
+/* ============================================
+   ACHIEVEMENT TIMELINE (GHOST CARDS)
+   ============================================ */
+.timeline-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+/* Vertical line connecting timeline */
+.timeline-feed::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    z-index: 0;
+}
+
+.timeline-date-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-date-divider span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--soft-silver);
+    background: var(--archive-bg);
+    padding-right: 8px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--archive-border);
+}
+
+.ghost-card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 16px;
+    background: var(--archive-panel);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-left: 28px; /* Offset for timeline line */
+    cursor: pointer;
+    transition: var(--transition);
+    /* Frosted Obsidian styling */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0.7; /* Ghost effect */
+}
+
+/* Timeline dot */
+.ghost-card::before {
+    content: '';
+    position: absolute;
+    left: -29px; /* Align over vertical line */
+    top: 24px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--archive-bg);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.ghost-card:hover {
+    opacity: 1;
+    transform: translateX(4px);
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ghost-card:hover::before {
+    border-color: var(--white);
+    background: var(--white);
+}
+
+.ghost-indicator {
+    width: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Desaturated source colors for history */
+.ghost-indicator.gmail { background: rgba(234, 67, 53, 0.4); }
+.ghost-indicator.telegram { background: rgba(0, 136, 204, 0.4); }
+.ghost-indicator.whatsapp { background: rgba(37, 211, 102, 0.4); }
+
+.ghost-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ghost-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: line-through; /* Indicates completion */
+    text-decoration-color: rgba(255,255,255,0.3);
+}
+
+.ghost-meta {
+    font-size: 0.75rem;
+    color: var(--soft-silver);
+}
+
+/* ============================================
+   TROPHY ROOM GRID
+   ============================================ */
+.trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.trophy-card {
+    position: relative;
+    background: var(--archive-panel);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    /* Deep layer shadow */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.trophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Foil Borders using pseudo-elements */
+.trophy-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    padding: 2px; /* Border thickness */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+.trophy-card.gold-tier::before { background: var(--gold-foil); }
+.trophy-card.silver-tier::before { background: var(--silver-foil); }
+.trophy-card.bronze-tier::before { background: var(--bronze-foil); }
+
+.trophy-card:hover::before {
+    opacity: 1;
+}
+
+/* Shimmer Animation Effect on Hover */
+.trophy-shimmer {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: skewX(-20deg);
+}
+
+.trophy-card:hover .trophy-shimmer {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% { left: 200%; }
+}
+
+.trophy-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.trophy-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gold-tier .trophy-icon { color: #fbf5b7; box-shadow: inset 0 0 20px rgba(191, 149, 63, 0.2); }
+.silver-tier .trophy-icon { color: #e8e8e8; box-shadow: inset 0 0 20px rgba(192, 192, 192, 0.2); }
+.bronze-tier .trophy-icon { color: #f3d0a9; box-shadow: inset 0 0 20px rgba(205, 127, 50, 0.2); }
+
+.trophy-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.trophy-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.trophy-date {
+    font-size: 0.8rem;
+    color: var(--soft-silver);
+}
+
+/* ============================================
+   SIDE INSPECTOR PANEL (ORIGIN STORY)
+   ============================================ */
+.inspector-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 200;
+    transition: opacity 0.4s ease;
+}
+
+.inspector-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.inspector-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    background: rgba(15, 18, 25, 0.95);
+    border-left: 1px solid var(--archive-border);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+}
+
+.inspector-panel.active {
+    transform: translateX(0);
+}
+
+.inspector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.inspector-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.btn-close-inspector {
+    background: transparent;
+    border: none;
+    color: var(--soft-silver);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.btn-close-inspector:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.inspector-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow-y: auto;
+}
+
+.inspector-meta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+}
+
+.meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--soft-silver);
+}
+
+.meta-value {
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+#inspect-task {
+    font-weight: 600;
+    color: var(--neon-mint);
+}
+
+.origin-snippet-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.snippet-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.origin-snippet {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px 8px 8px 4px;
+    padding: 16px;
+}
+
+.snippet-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    color: var(--soft-silver);
+}
+
+.snippet-app {
+    font-weight: 600;
+    color: rgba(234, 67, 53, 0.8); /* App color override dynamically */
+}
+
+.snippet-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+.inspector-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-inspector {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-inspector.outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+.btn-inspector.outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-inspector.danger {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid transparent;
+    color: #ef4444;
+}
+
+.btn-inspector.danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE OVERRIDES
+   ============================================ */
+@media (max-width: 1024px) {
+    .archive-layout {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    .control-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+    }
+    .filter-divider {
+        width: 100%;
+        height: 1px;
+    }
+    .inspector-panel {
+        width: 100%;
+    }
+}
