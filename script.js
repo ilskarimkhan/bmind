@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (finishSetupBtn && setupScreen) {
         finishSetupBtn.addEventListener('click', () => {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'pages/dashboard.html';
         });
     }
 
