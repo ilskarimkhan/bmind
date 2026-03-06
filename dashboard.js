@@ -5,18 +5,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dynamic Greeting Based on Time ---
-    const heroTitle = document.querySelector('.hero-title');
-    const heroGreeting = document.querySelector('.hero-greeting');
-    if (heroTitle) {
+    const heroGreetingDynamic = document.getElementById('hero-greeting-dynamic');
+    if (heroGreetingDynamic) {
         const hour = new Date().getHours();
         let greeting = 'Good morning';
         if (hour >= 12 && hour < 17) greeting = 'Good afternoon';
         else if (hour >= 17) greeting = 'Good evening';
 
-        heroTitle.textContent = `${greeting}, Rinat.`;
-        if (heroGreeting) {
-            heroGreeting.innerHTML = `<span class="wave">👋</span> ${greeting.toUpperCase().split(' ')[1] || greeting.toUpperCase()}`;
-        }
+        heroGreetingDynamic.innerHTML = `${greeting}, Alex. Bmind is analyzing <span class="highlight-sources">4 new sources</span>.`;
     }
 
     // --- Sidebar Active State ---
