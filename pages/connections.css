@@ -1,0 +1,489 @@
+/* ============================================
+   CONNECTIONS (SYNC HUB) STYLES
+   ============================================ */
+
+/* --- Layout & Typography --- */
+.connections-body {
+  background-color: #050509; /* Deep Navy Signature */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.connections-main {
+  flex-grow: 1;
+  padding: 120px 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.connections-header {
+  margin-bottom: 40px;
+}
+
+.connections-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.connections-subtitle {
+  font-size: 1.15rem;
+  color: var(--soft-silver);
+  max-width: 600px;
+}
+
+/* --- Integration Tiles Grid --- */
+.connections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* --- Tile 3D/Glassmorphic Styling --- */
+.integration-tile {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform;
+}
+
+.tile-bg-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  filter: blur(80px);
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.integration-tile:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* The slight tilt is handled in JS or we can supply a default fallback transform here */
+}
+
+.integration-tile:hover .tile-bg-glow {
+  opacity: 0.15;
+}
+
+.tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  transform: translateZ(20px); /* 3D effect layer */
+}
+
+.platform-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.platform-icon.whatsapp { color: var(--whatsapp); }
+.platform-icon.telegram { color: var(--telegram); }
+.platform-icon.gmail { color: var(--gmail); }
+.platform-icon.slack { color: var(--slack); }
+
+
+/* --- Pulse Orbs --- */
+.pulse-orb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.pulse-orb.active {
+  background-color: var(--soft-mint);
+  color: var(--soft-mint);
+  animation: pulse-active 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.pulse-orb.syncing {
+  background-color: var(--telegram);
+  color: var(--telegram);
+  animation: pulse-syncing 1.5s ease-in-out infinite alternate;
+}
+
+.pulse-orb.action-required {
+  background-color: #EF4444; /* Signal Red */
+  color: #EF4444;
+  animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-active {
+  0%, 100% { opacity: 0.8; transform: scale(1); box-shadow: 0 0 10px rgba(168, 230, 207, 0.6); }
+  50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 20px rgba(168, 230, 207, 0.9); }
+}
+
+@keyframes pulse-syncing {
+  0% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 5px rgba(42, 171, 238, 0.3); }
+  100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 25px rgba(42, 171, 238, 0.9); }
+}
+
+@keyframes pulse-danger {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+/* --- Tile Body --- */
+.tile-body {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(10px);
+}
+
+.platform-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.tile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.last-synced {
+  font-size: 0.85rem;
+  color: var(--soft-silver);
+  font-family: monospace;
+}
+
+.privacy-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: var(--soft-silver-light);
+}
+
+.privacy-badge.warning {
+  background: rgba(245, 158, 11, 0.15); /* Signal Amber */
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #FBBF24;
+}
+
+
+/* --- Security Banner --- */
+.security-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(20, 20, 25, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--soft-silver);
+  z-index: 100;
+  font-family: monospace;
+}
+
+.security-banner svg {
+  color: var(--whatsapp);
+}
+
+
+/* --- Configuration Overlay (Side Panel) --- */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.config-panel {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  background: #0A0A0E;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 50px rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+
+.config-panel.active {
+  right: 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.panel-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--soft-silver);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+}
+
+/* --- Panel Forms --- */
+.config-group {
+  margin-bottom: 40px;
+}
+
+.config-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.config-value {
+  color: var(--electric-indigo);
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.config-desc {
+  font-size: 0.85rem;
+  color: var(--soft-silver);
+  margin-bottom: 20px;
+}
+
+/* Range Slider */
+.range-slider-wrapper {
+  position: relative;
+  padding: 0 10px;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--electric-indigo);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  border: 2px solid var(--white);
+  transition: transform 0.2s;
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--soft-silver);
+  font-family: monospace;
+  position: relative;
+}
+
+/* Checkboxes */
+.scopes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scope-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.scope-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-visual {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.checkbox-visual svg {
+  width: 14px;
+  height: 14px;
+  color: var(--white);
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.custom-checkbox:checked ~ .checkbox-visual {
+  background: var(--electric-indigo);
+  border-color: var(--electric-indigo);
+}
+
+.custom-checkbox:checked ~ .checkbox-visual svg {
+  stroke-dashoffset: 0;
+}
+
+.scope-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scope-title {
+  font-weight: 500;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.scope-desc {
+  font-size: 0.8rem;
+  color: var(--soft-silver);
+}
+
+.danger-zone {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.disconnect-btn {
+  width: 100%;
+  justify-content: center;
+  color: #EF4444; /* Signal Red */
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.disconnect-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border-color: #EF4444;
+}
+
+/* Active Nav Links Addition */
+.active-link {
+  color: var(--white) !important;
+  font-weight: 600 !important;
+}

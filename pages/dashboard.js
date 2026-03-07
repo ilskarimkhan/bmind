@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Entrance Animations ---
     const animateElements = [
-        { el: document.getElementById('hero-card'), delay: 0 },
-        { el: document.getElementById('deadline-rail'), delay: 150 },
+        { el: document.getElementById('priority-card'), delay: 0 },
+        { el: document.getElementById('timeline-rail'), delay: 150 },
         { el: document.getElementById('actions-panel'), delay: 300 },
         { el: document.getElementById('mastery-panel'), delay: 400 },
     ];

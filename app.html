@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bmind — Your intelligent productivity command center. View deadlines, actions, and personalized learning.">
+    <title>Bmind — Dashboard</title>
+    <link rel="stylesheet" href="pages/dashboard.css">
+    <link rel="stylesheet" href="pages/library.css">
+    <link rel="stylesheet" href="pages/archive.css">
+    <link rel="stylesheet" href="pages/connections.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+
+        <!-- ================================ SIDEBAR ================================ -->
+        <aside class="sidebar" id="sidebar">
+            <a href="index.html" class="sidebar-brand">
+                <div class="sidebar-brand-icon">B</div>
+                <span class="sidebar-brand-name">Bmind</span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <a href="#pulse" class="sidebar-link active" data-view="view-pulse">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    <span>Pulse</span>
+                </a>
+                <a href="#library" class="sidebar-link" data-view="view-library">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    <span>Library</span>
+                </a>
+                <a href="#archive" class="sidebar-link" data-view="view-archive">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                    </svg>
+                    <span>Archive</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <a href="#connections" class="sidebar-link" data-view="view-connections">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    <span>Connections</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar">R</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Rinat</span>
+                        <span class="sidebar-user-plan">Free Trial</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ================================ MAIN CONTENT AREA ================================ -->
+        <main class="main-content" id="main-content">
+
+            <!-- ============================================================ -->
+            <!-- VIEW: PULSE (DASHBOARD)                                       -->
+            <!-- ============================================================ -->
+            <section class="app-view active" id="view-pulse">
+
+                <!-- Focus Feed Hero Card -->
+                <div class="priority-card" id="priority-card">
+                    <div class="priority-content">
+                        <div class="hero-greeting" id="hero-greeting-dynamic">
+                            Good Morning, Alex. Bmind is analyzing <span class="highlight-sources">4 new sources</span>.
+                        </div>
+                        <h1 class="priority-title">Finalize Biology Paper.</h1>
+                        <p class="priority-subtitle">
+                            Due in <strong style="color: var(--amber-soon);">6 hours</strong> (extracted from Gmail - Prof. Chen).<br>
+                            <span class="priority-notes">Related notes available.</span>
+                        </p>
+                        <div class="priority-action">
+                            <button class="btn-open-notes">Open Notes</button>
+                            <button class="btn-start-focus">Start Focus Session</button>
+                        </div>
+                    </div>
+                    <div class="clock-3d-visual">
+                        <div class="clock-face">
+                            <div class="clock-ring outer"></div>
+                            <div class="clock-ring middle"></div>
+                            <div class="clock-ring inner">
+                                <div class="clock-hand hours"></div>
+                                <div class="clock-hand minutes"></div>
+                                <div class="clock-hand seconds"></div>
+                                <div class="clock-center"></div>
+                            </div>
+                            <div class="clock-glow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Rail -->
+                <div class="timeline-rail" id="timeline-rail">
+                    <div class="rail-header">
+                        <h2 class="rail-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                            Timeline Rail
+                        </h2>
+                        <span class="rail-count">Next 7 Days</span>
+                    </div>
+                    <div class="timeline-track-container">
+                        <div class="timeline-track">
+                            <div class="timeline-days">
+                                <div class="day-col">Today</div>
+                                <div class="day-col">Tomorrow</div>
+                                <div class="day-col">Wed</div>
+                                <div class="day-col">Thu</div>
+                                <div class="day-col">Fri</div>
+                                <div class="day-col">Sat</div>
+                                <div class="day-col">Sun</div>
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="grid-col active"></div>
+                                <div class="grid-col"></div>
+                                <div class="grid-col"></div>
+                                <div class="grid-col"></div>
+                                <div class="grid-col"></div>
+                                <div class="grid-col"></div>
+                                <div class="grid-col"></div>
+                                <div class="timeline-tag tag-deadline" style="left: calc((100% / 7) * 1 + 10px); top: 30%;">
+                                    <div class="tag-header">
+                                        <span class="tag-time">2:00 PM</span>
+                                        <span class="tag-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="tag-title">Math Quiz</div>
+                                </div>
+                                <div class="timeline-tag tag-meeting" style="left: calc((100% / 7) * 2 + 10px); top: 15%;">
+                                    <div class="tag-header"><span class="tag-time">10:00 AM</span></div>
+                                    <div class="tag-title">Project Sync</div>
+                                </div>
+                                <div class="timeline-tag tag-study" style="left: calc((100% / 7) * 3 + 10px); top: 60%;">
+                                    <div class="tag-header"><span class="tag-time">5:00 PM</span></div>
+                                    <div class="tag-title">Read ch 4 &amp; 5</div>
+                                </div>
+                                <div class="timeline-tag tag-meeting" style="left: 10px; top: 55%;">
+                                    <div class="tag-header"><span class="tag-time">4:00 PM</span></div>
+                                    <div class="tag-title">Advisor Meeting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two-Column Layout -->
+                <div class="columns-grid">
+                    <div class="column-panel" id="actions-panel">
+                        <div class="column-header">
+                            <h2 class="column-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                Action Feed
+                            </h2>
+                            <span class="column-badge minimal">Minimal</span>
+                        </div>
+                        <div class="masonry-feed">
+                            <div class="action-card-masonry">
+                                <div class="card-header">
+                                    <span class="app-icon whatsapp">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    </span>
+                                    <span class="header-text">Group Project Chat</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="extracted-action">"Send outline to Sarah by EOD."</p>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn-minimal add">Add to Tasks</button>
+                                    <button class="btn-minimal dismiss">Dismiss</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-panel" id="mastery-panel">
+                        <div class="column-header">
+                            <h2 class="column-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                                Mastery Path
+                            </h2>
+                            <span class="column-badge rich">Personalized</span>
+                        </div>
+                        <div class="mastery-list">
+                            <div class="mastery-card-rich">
+                                <div class="rich-header">
+                                    <div class="youtube-icon-wrap">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000" stroke="#FF0000" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon fill="#FFF" points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                                    </div>
+                                    <div class="rich-title">Mitosis Explained - 10 min video</div>
+                                </div>
+                                <div class="rich-body">
+                                    <p class="rich-context">Context: Recommended for Biology Paper (see Priority Card)</p>
+                                </div>
+                                <div class="rich-footer">
+                                    <div class="circular-progress" data-progress="0">
+                                        <div class="inner-circle">0%</div>
+                                    </div>
+                                    <button class="btn-rich-start">Start Learning</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bmind Context Widget -->
+                <div class="bmind-context-widget" id="contextWidget">
+                    <div class="context-panel" id="contextPanel">
+                        <div class="context-header">
+                            <h3>Bmind Context</h3>
+                            <span class="context-badge">Active</span>
+                        </div>
+                        <div class="context-threads">
+                            <div class="thread-item priority-high">
+                                <span class="thread-icon email"><span class="dot" style="background: var(--gmail);"></span></span>
+                                <div class="thread-content">
+                                    <span class="thread-title">Email Notification: Prof. Chen</span>
+                                    <span class="thread-detail">Exam Date Update</span>
+                                </div>
+                            </div>
+                            <div class="thread-item priority-normal">
+                                <span class="thread-icon telegram"><span class="dot" style="background: var(--telegram);"></span></span>
+                                <div class="thread-content">
+                                    <span class="thread-title">Telegram Chat: Study Group</span>
+                                    <span class="thread-detail">Mitosis discussion</span>
+                                </div>
+                            </div>
+                            <div class="thread-item priority-low">
+                                <span class="thread-icon whatsapp"><span class="dot" style="background: var(--whatsapp);"></span></span>
+                                <div class="thread-content">
+                                    <span class="thread-title">WhatsApp: Mom</span>
+                                    <span class="thread-detail">Weekend plans — low priority</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="neural-cluster-trigger" id="neuralTrigger">
+                        <div class="node core"></div>
+                        <div class="node satellite sat-1"></div>
+                        <div class="node satellite sat-2"></div>
+                        <div class="node satellite sat-3"></div>
+                        <svg class="neural-connections" viewBox="0 0 60 60">
+                            <line x1="30" y1="30" x2="15" y2="15" />
+                            <line x1="30" y1="30" x2="45" y2="10" />
+                            <line x1="30" y1="30" x2="20" y2="45" />
+                        </svg>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- VIEW: LIBRARY                                                 -->
+            <!-- ============================================================ -->
+            <section class="app-view" id="view-library">
+
+                <div class="global-search-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" class="global-search-input" placeholder="Search your thoughts, messages, and lessons...">
+                    <div class="search-cmd-hint">⌘K</div>
+                </div>
+
+                <header class="library-header">
+                    <h1 class="library-title">Cognitive Vault</h1>
+                    <p class="library-subtitle">Your synthesized knowledge base.</p>
+                </header>
+
+                <div class="library-layout">
+                    <div class="vault-main-area">
+                        <section class="active-learning-section">
+                            <h2 class="section-title">In-Progress Mastery</h2>
+                            <div class="learning-carousel">
+                                <div class="learning-card">
+                                    <div class="card-thumbnail youtube-thumb">
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <div class="card-info"><h3 class="learning-title">Mitosis Explained</h3><span class="learning-source">10 min video</span></div>
+                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 65%;"><span class="progress-text">65%</span></div></div><button class="btn-resume">Resume</button></div>
+                                </div>
+                                <div class="learning-card">
+                                    <div class="card-thumbnail article-thumb">
+                                        <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                    </div>
+                                    <div class="card-info"><h3 class="learning-title">REST API Best Practices</h3><span class="learning-source">Medium Article</span></div>
+                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 30%;"><span class="progress-text">30%</span></div></div><button class="btn-resume">Resume</button></div>
+                                </div>
+                                <div class="learning-card">
+                                    <div class="card-thumbnail course-thumb">
+                                        <svg class="course-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                    </div>
+                                    <div class="card-info"><h3 class="learning-title">Chain Rule Deep Dive</h3><span class="learning-source">Coursera Module</span></div>
+                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 85%;"><span class="progress-text">85%</span></div></div><button class="btn-resume">Resume</button></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="smart-folders-section">
+                            <div class="section-header-row"><h2 class="section-title">Smart Folders</h2><button class="btn-view-all">View All</button></div>
+                            <div class="folders-grid">
+                                <div class="smart-folder folder-biology">
+                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v2a8 8 0 0 0 8 8v0a8 8 0 0 1 8 8v2"/><path d="M18 3v2a8 8 0 0 1-8 8v0a8 8 0 0 0-8 8v2"/><line x1="15" y1="5" x2="9" y2="5"/><line x1="17" y1="10" x2="11" y2="10"/><line x1="13" y1="14" x2="7" y2="14"/><line x1="15" y1="19" x2="9" y2="19"/></svg></div><span class="new-insights-badge">3 New Insights</span></div>
+                                    <div class="folder-footer"><h3 class="folder-name">Biology</h3><span class="folder-meta">24 sources synthesized</span></div>
+                                </div>
+                                <div class="smart-folder folder-work">
+                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div><span class="new-insights-badge">1 New Insight</span></div>
+                                    <div class="folder-footer"><h3 class="folder-name">Sprint Planning</h3><span class="folder-meta">18 sources synthesized</span></div>
+                                </div>
+                                <div class="smart-folder folder-finance">
+                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div></div>
+                                    <div class="folder-footer"><h3 class="folder-name">Personal Finance</h3><span class="folder-meta">8 sources synthesized</span></div>
+                                </div>
+                                <div class="smart-folder folder-general">
+                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><span class="new-insights-badge">5 New Insights</span></div>
+                                    <div class="folder-footer"><h3 class="folder-name">General Knowledge</h3><span class="folder-meta">42 sources synthesized</span></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <aside class="sidebar-right insight-stream">
+                        <div class="stream-header"><h2>Insight Stream</h2><span class="live-pulse"></span></div>
+                        <div class="briefs-feed">
+                            <div class="insight-brief brief-violet">
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+                                <div class="brief-content"><p class="brief-text">Recap: Your group project chat settled on Friday for the deadline.</p><span class="brief-time">10 mins ago</span></div>
+                            </div>
+                            <div class="insight-brief brief-mint">
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                                <div class="brief-content"><p class="brief-text">Note extracted from Gmail: Biology Midterm will cover Chapters 4-6 heavily.</p><span class="brief-time">1 hour ago</span></div>
+                            </div>
+                            <div class="insight-brief brief-amber">
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                                <div class="brief-content"><p class="brief-text">Detected a pattern: You typically focus best on complex math tasks before noon.</p><span class="brief-time">2 hours ago</span></div>
+                            </div>
+                            <div class="insight-brief brief-violet">
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+                                <div class="brief-content"><p class="brief-text">Action added: Mom invited you to dinner on Sunday night.</p><span class="brief-time">Yesterday</span></div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- VIEW: ARCHIVE                                                 -->
+            <!-- ============================================================ -->
+            <section class="app-view" id="view-archive">
+
+                <div class="archive-header-wrapper">
+                    <header class="archive-header">
+                        <h1 class="archive-title">Memory Bank</h1>
+                        <p class="archive-subtitle">Your history of focus and achievement.</p>
+                    </header>
+                    <div class="control-bar">
+                        <div class="filter-group">
+                            <span class="filter-label">Time Period:</span>
+                            <div class="pill-group">
+                                <button class="filter-pill active">Last 7 Days</button>
+                                <button class="filter-pill">Last 30 Days</button>
+                                <button class="filter-pill">Custom</button>
+                            </div>
+                        </div>
+                        <div class="filter-divider"></div>
+                        <div class="filter-group">
+                            <span class="filter-label">Source:</span>
+                            <div class="pill-group">
+                                <button class="filter-pill active">All</button>
+                                <button class="filter-pill">Gmail</button>
+                                <button class="filter-pill">Telegram</button>
+                                <button class="filter-pill">WhatsApp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="archive-layout">
+                    <div class="timeline-area">
+                        <h2 class="section-title">Achievement Stream</h2>
+                        <div class="timeline-feed">
+                            <div class="timeline-date-divider"><span>Today</span><div class="divider-line"></div></div>
+                            <div class="ghost-card" data-origin-id="t-1">
+                                <div class="ghost-indicator gmail"></div>
+                                <div class="ghost-content"><h3 class="ghost-title">Finalize Biology Paper.</h3><p class="ghost-meta">Completed 2 hours ago • Source: Prof. Chen (Gmail)</p></div>
+                            </div>
+                            <div class="timeline-date-divider"><span>Yesterday</span><div class="divider-line"></div></div>
+                            <div class="ghost-card" data-origin-id="t-2">
+                                <div class="ghost-indicator telegram"></div>
+                                <div class="ghost-content"><h3 class="ghost-title">Review Mitosis Chapter 4-6</h3><p class="ghost-meta">Completed 16 hours ago • Source: Study Group (Telegram)</p></div>
+                            </div>
+                            <div class="ghost-card" data-origin-id="t-3">
+                                <div class="ghost-indicator whatsapp"></div>
+                                <div class="ghost-content"><h3 class="ghost-title">Send outline to Sarah</h3><p class="ghost-meta">Completed 1 day ago • Source: Group Project (WhatsApp)</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trophy-area">
+                        <h2 class="section-title">Completed Deadlines</h2>
+                        <div class="trophy-grid">
+                            <div class="trophy-card gold-tier" data-origin-id="tr-1">
+                                <div class="trophy-shimmer"></div>
+                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-3-3m0 0l3-3m-3 3h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><h3 class="trophy-title">Biology Paper Final</h3><p class="trophy-date">Oct 24, 2026</p></div></div>
+                            </div>
+                            <div class="trophy-card silver-tier" data-origin-id="tr-2">
+                                <div class="trophy-shimmer"></div>
+                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><h3 class="trophy-title">Sprint Presentation</h3><p class="trophy-date">Oct 20, 2026</p></div></div>
+                            </div>
+                            <div class="trophy-card bronze-tier" data-origin-id="tr-3">
+                                <div class="trophy-shimmer"></div>
+                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><h3 class="trophy-title">Read Ch. 4 &amp; 5</h3><p class="trophy-date">Oct 18, 2026</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archive Inspector Panel -->
+                <div class="inspector-overlay" id="inspector-overlay"></div>
+                <aside class="inspector-panel" id="inspector-panel">
+                    <div class="inspector-header">
+                        <h2>Origin Story</h2>
+                        <button class="btn-close-inspector" id="btn-close-inspector">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                    </div>
+                    <div class="inspector-content">
+                        <div class="inspector-meta-box">
+                            <div class="meta-row"><span class="meta-label">Task</span><span class="meta-value" id="inspect-task">Finalize Biology Paper.</span></div>
+                            <div class="meta-row"><span class="meta-label">Processed</span><span class="meta-value">Oct 20, 2026 at 09:14 AM</span></div>
+                            <div class="meta-row"><span class="meta-label">Archived</span><span class="meta-value">Oct 24, 2026 at 02:30 PM</span></div>
+                        </div>
+                        <div class="origin-snippet-container">
+                            <h3 class="snippet-title">Original Source</h3>
+                            <div class="origin-snippet" id="inspect-snippet">
+                                <div class="snippet-header"><span class="snippet-app">Gmail</span><span class="snippet-sender">From: Prof. Chen</span></div>
+                                <p class="snippet-body">"Hello everyone, just a reminder that the final draft of your Biology Paper is due this Friday by 5:00 PM."</p>
+                            </div>
+                        </div>
+                        <div class="inspector-actions">
+                            <button class="btn-inspector outline">Restore to Dashboard</button>
+                            <button class="btn-inspector danger">Delete Permanently</button>
+                        </div>
+                    </div>
+                </aside>
+
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- VIEW: CONNECTIONS                                             -->
+            <!-- ============================================================ -->
+            <section class="app-view" id="view-connections">
+
+                <div class="connections-container" style="padding: 40px; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
+                    <header class="connections-header reveal">
+                        <h1 class="connections-title">Neural Bridges</h1>
+                        <p class="connections-subtitle">Manage your data sources and privacy boundaries.</p>
+                    </header>
+
+                    <div class="connections-grid reveal">
+                        <button class="integration-tile" data-service="whatsapp" data-status="active">
+                            <div class="tile-bg-glow" style="background: var(--whatsapp, #25d366);"></div>
+                            <div class="tile-header">
+                                <div class="platform-icon whatsapp"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+                                <div class="pulse-orb active" title="Active"></div>
+                            </div>
+                            <div class="tile-body"><h3 class="platform-name">WhatsApp</h3><div class="tile-meta"><span class="last-synced">2 minutes ago</span><span class="privacy-badge">High Privacy - Dates Only</span></div></div>
+                        </button>
+
+                        <button class="integration-tile" data-service="telegram" data-status="syncing">
+                            <div class="tile-bg-glow" style="background: var(--telegram, #2aabee);"></div>
+                            <div class="tile-header">
+                                <div class="platform-icon telegram"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+                                <div class="pulse-orb syncing" title="Syncing"></div>
+                            </div>
+                            <div class="tile-body"><h3 class="platform-name">Telegram</h3><div class="tile-meta"><span class="last-synced">Syncing now...</span><span class="privacy-badge">Full Context</span></div></div>
+                        </button>
+
+                        <button class="integration-tile" data-service="gmail" data-status="warning">
+                            <div class="tile-bg-glow" style="background: var(--gmail, #ea4335);"></div>
+                            <div class="tile-header">
+                                <div class="platform-icon gmail"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></div>
+                                <div class="pulse-orb action-required" title="Action Required"></div>
+                            </div>
+                            <div class="tile-body"><h3 class="platform-name">Gmail</h3><div class="tile-meta"><span class="last-synced">4 hours ago</span><span class="privacy-badge warning">Re-auth Required</span></div></div>
+                        </button>
+
+                        <button class="integration-tile" data-service="slack" data-status="active">
+                            <div class="tile-bg-glow" style="background: var(--slack, #e01e5a);"></div>
+                            <div class="tile-header">
+                                <div class="platform-icon slack"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg></div>
+                                <div class="pulse-orb active" title="Active"></div>
+                            </div>
+                            <div class="tile-body"><h3 class="platform-name">Slack</h3><div class="tile-meta"><span class="last-synced">15 minutes ago</span><span class="privacy-badge">Workspace Limited</span></div></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="security-banner reveal" style="width: 100%; border-radius: 0; box-sizing: border-box; margin-top: auto;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                    <span>All data is processed using local-first anonymization. No raw messages are stored on Bmind servers.</span>
+                </div>
+
+                <!-- Connections Side Panel Overlay -->
+                <div class="overlay-backdrop" id="overlay-backdrop"></div>
+                <aside class="config-panel" id="config-panel">
+                    <div class="panel-header">
+                        <div class="panel-title-group"><div class="panel-icon" id="panel-icon"></div><h2 class="panel-title" id="panel-title">Configuration</h2></div>
+                        <button class="close-btn" id="close-panel-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                    </div>
+                    <div class="panel-content">
+                        <div class="config-group">
+                            <div class="config-label"><span>Temporal Boundary</span><span class="config-value" id="temporal-value">14 days</span></div>
+                            <p class="config-desc">How far back should Bmind analyze messages?</p>
+                            <div class="range-slider-wrapper">
+                                <input type="range" min="1" max="30" value="14" class="custom-slider" id="temporal-slider">
+                                <div class="slider-ticks"><span>24h</span><span>7d</span><span>14d</span><span>30d</span></div>
+                            </div>
+                        </div>
+                        <div class="config-group">
+                            <div class="config-label">Permitted Scopes</div>
+                            <p class="config-desc">Select what intelligence should be extracted.</p>
+                            <div class="scopes-list" id="scopes-list">
+                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Deadlines &amp; Events</span><span class="scope-desc">Extract dates and times into Calendar.</span></div></label>
+                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Action Items</span><span class="scope-desc">Create tasks and reminders from requests.</span></div></label>
+                                <label class="scope-item"><input type="checkbox" class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Personal Chat History</span><span class="scope-desc">Generate study cards and contextual memory.</span></div></label>
+                            </div>
+                        </div>
+                        <div class="danger-zone"><button class="btn btn-outline disconnect-btn">Disconnect Integration</button></div>
+                    </div>
+                </aside>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="router.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

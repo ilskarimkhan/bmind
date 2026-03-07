@@ -303,10 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (finishSetupBtn && setupScreen) {
-        finishSetupBtn.addEventListener('click', () => {
-            window.location.href = 'pages/dashboard.html';
-        });
-    }
+    // Listener for finishSetupBtn removed as it's an anchor tag.
 
 });
