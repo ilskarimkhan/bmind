@@ -1,0 +1,22 @@
+{
+  "name": "bmind-server",
+  "version": "1.0.0",
+  "description": "Bmind Intelligence & Data Pipeline Backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "@whiskeysockets/baileys": "^6.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0",
+    "google-auth-library": "^9.14.0",
+    "googleapis": "^144.0.0",
+    "groq-sdk": "^0.8.0",
+    "telegraf": "^4.16.0"
+  }
+}

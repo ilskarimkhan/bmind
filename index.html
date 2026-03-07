@@ -796,6 +796,54 @@
     </div>
   </footer>
 
+  <!-- ================================ AUTH MODAL ================================ -->
+  <div id="auth-modal">
+    <div class="auth-container">
+      <div class="auth-brand">
+        <div class="brand-icon">B</div>
+        <span class="brand-name">Bmind</span>
+      </div>
+
+      <!-- Sign Up Form -->
+      <form id="auth-signup-form" class="auth-form active">
+        <h2 class="auth-title">Create your account</h2>
+        <p class="auth-subtitle">Start your intelligent productivity journey.</p>
+        <div class="auth-field">
+          <label for="signup-name">Display Name</label>
+          <input type="text" id="signup-name" placeholder="Alex" autocomplete="name" />
+        </div>
+        <div class="auth-field">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" placeholder="alex@example.com" required autocomplete="email" />
+        </div>
+        <div class="auth-field">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="••••••••" required minlength="6" autocomplete="new-password" />
+        </div>
+        <div id="auth-error-signup" class="auth-error"></div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Create Account</button>
+        <p class="auth-switch">Already have an account? <a href="#" id="switch-to-login">Sign in</a></p>
+      </form>
+
+      <!-- Login Form -->
+      <form id="auth-login-form" class="auth-form">
+        <h2 class="auth-title">Welcome back</h2>
+        <p class="auth-subtitle">Sign in to your Bmind workspace.</p>
+        <div class="auth-field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="alex@example.com" required autocomplete="email" />
+        </div>
+        <div class="auth-field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+        <div id="auth-error-login" class="auth-error"></div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Sign In</button>
+        <p class="auth-switch">Don't have an account? <a href="#" id="switch-to-signup">Create one</a></p>
+      </form>
+    </div>
+  </div>
+
   <!-- ================================ SETUP SCREEN ================================ -->
   <div id="setup-screen">
     <div class="setup-container">

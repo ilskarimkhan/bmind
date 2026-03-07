@@ -4,7 +4,8 @@
 
 /* --- Layout & Typography --- */
 .connections-body {
-  background-color: #050509; /* Deep Navy Signature */
+  background-color: #050509;
+  /* Deep Navy Signature */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -93,7 +94,8 @@
   align-items: flex-start;
   position: relative;
   z-index: 2;
-  transform: translateZ(20px); /* 3D effect layer */
+  transform: translateZ(20px);
+  /* 3D effect layer */
 }
 
 .platform-icon {
@@ -106,13 +108,24 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--white);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.platform-icon.whatsapp { color: var(--whatsapp); }
-.platform-icon.telegram { color: var(--telegram); }
-.platform-icon.gmail { color: var(--gmail); }
-.platform-icon.slack { color: var(--slack); }
+.platform-icon.whatsapp {
+  color: var(--whatsapp);
+}
+
+.platform-icon.telegram {
+  color: var(--telegram);
+}
+
+.platform-icon.gmail {
+  color: var(--gmail);
+}
+
+.platform-icon.slack {
+  color: var(--slack);
+}
 
 
 /* --- Pulse Orbs --- */
@@ -136,24 +149,54 @@
 }
 
 .pulse-orb.action-required {
-  background-color: #EF4444; /* Signal Red */
+  background-color: #EF4444;
+  /* Signal Red */
   color: #EF4444;
   animation: pulse-danger 2s infinite;
 }
 
 @keyframes pulse-active {
-  0%, 100% { opacity: 0.8; transform: scale(1); box-shadow: 0 0 10px rgba(168, 230, 207, 0.6); }
-  50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 20px rgba(168, 230, 207, 0.9); }
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(168, 230, 207, 0.6);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(168, 230, 207, 0.9);
+  }
 }
 
 @keyframes pulse-syncing {
-  0% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 5px rgba(42, 171, 238, 0.3); }
-  100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 25px rgba(42, 171, 238, 0.9); }
+  0% {
+    opacity: 0.4;
+    transform: scale(0.9);
+    box-shadow: 0 0 5px rgba(42, 171, 238, 0.3);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 25px rgba(42, 171, 238, 0.9);
+  }
 }
 
 @keyframes pulse-danger {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.9); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
 }
 
 /* --- Tile Body --- */
@@ -195,7 +238,8 @@
 }
 
 .privacy-badge.warning {
-  background: rgba(245, 158, 11, 0.15); /* Signal Amber */
+  background: rgba(245, 158, 11, 0.15);
+  /* Signal Amber */
   border-color: rgba(245, 158, 11, 0.3);
   color: #FBBF24;
 }
@@ -258,7 +302,7 @@
   display: flex;
   flex-direction: column;
   transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -10px 0 50px rgba(0,0,0,0.5);
+  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
 }
 
@@ -288,7 +332,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .panel-title {
@@ -311,7 +355,7 @@
 }
 
 .close-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--white);
 }
 
@@ -352,7 +396,7 @@
   -webkit-appearance: none;
   width: 100%;
   height: 6px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   outline: none;
   margin-bottom: 16px;
@@ -398,14 +442,14 @@
   cursor: pointer;
   padding: 16px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: border-color 0.2s, background 0.2s;
 }
 
 .scope-item:hover {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .custom-checkbox {
@@ -420,7 +464,7 @@
   width: 24px;
   height: 24px;
   border-radius: 6px;
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -437,12 +481,12 @@
   transition: stroke-dashoffset 0.3s ease;
 }
 
-.custom-checkbox:checked ~ .checkbox-visual {
+.custom-checkbox:checked~.checkbox-visual {
   background: var(--electric-indigo);
   border-color: var(--electric-indigo);
 }
 
-.custom-checkbox:checked ~ .checkbox-visual svg {
+.custom-checkbox:checked~.checkbox-visual svg {
   stroke-dashoffset: 0;
 }
 
@@ -466,13 +510,14 @@
 .danger-zone {
   margin-top: auto;
   padding-top: 32px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .disconnect-btn {
   width: 100%;
   justify-content: center;
-  color: #EF4444; /* Signal Red */
+  color: #EF4444;
+  /* Signal Red */
   border-color: rgba(239, 68, 68, 0.3);
 }
 
