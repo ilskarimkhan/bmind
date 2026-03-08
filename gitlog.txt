@@ -1,0 +1,10 @@
+﻿4e7938d feat: Add comprehensive .gitignore rules for common project artifacts including dependencies, environment files, logs, and build outputs.
+2f04ce6 feat: Add initial server environment configuration to `.env` and exclude it from version control via `.gitignore`.
+f204402 feat: add comprehensive styling for the Connections (Sync Hub) page, including integration tiles, status indicators, and a configuration panel.
+d374a73 chore: Add and update project dependencies by installing node modules.
+029b8a8 feat: Implement core application structure with routing and initial dashboard, library, and connections pages.
+04f837b relocate page-specific assets to a new `pages` subdirectory and update `script.js`
+9c174d6 feat: Introduce Library and Archive pages with their dedicated styles and scripts.
+6495017 feat: Redesign priority card with a 3D sinking clock visualization and rename deadline rail to timeline rail.
+aae5a42 feat: introduce dashboard page with dynamic features and add learning library section to the homepage.
+54a5961 refactor: reduce card quantity from 10 to 4 and update text content for WhatsApp, Telegram, and Gmail cards.
