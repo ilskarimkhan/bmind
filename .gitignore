@@ -27,3 +27,12 @@ Thumbs.db
 dist/
 build/
 coverage/
+
+# Python UserBot
+userbot/sessions/
+userbot/__pycache__/
+userbot/*.session
+userbot/.env
+__pycache__/
+*.pyc
+*.pyo

@@ -17,6 +17,8 @@
     "google-auth-library": "^9.14.0",
     "googleapis": "^144.0.0",
     "groq-sdk": "^0.8.0",
+    "prebuilt-tdlib": "^0.1008062.0",
+    "tdl": "^8.0.2",
     "telegraf": "^4.16.0"
   }
 }

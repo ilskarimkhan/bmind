@@ -122,11 +122,11 @@ body {
 
 .learning-card {
     flex: 0 0 calc(33.333% - 14px);
-    min-width: 280px;
+    min-width: 340px;
     background: var(--glass-panel);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
-    padding: 20px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -144,7 +144,7 @@ body {
 
 .card-thumbnail {
     width: 100%;
-    height: 120px;
+    height: 180px;
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -197,8 +197,8 @@ body {
 
 /* Conic Gradient Progress Ring */
 .progress-ring-container {
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
 }
 
 .progress-ring {
@@ -215,8 +215,8 @@ body {
 .progress-ring::before {
     content: '';
     position: absolute;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     background: #151922; /* match card approx */
     border-radius: 50%;
 }
@@ -224,7 +224,7 @@ body {
 .progress-text {
     position: relative;
     z-index: 1;
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--white);
 }
@@ -281,7 +281,7 @@ body {
 .smart-folder {
     background: linear-gradient(135deg, rgba(30, 30, 36, 0.6) 0%, rgba(20, 20, 24, 0.8) 100%);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) var(--radius-xl);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -293,6 +293,23 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     /* Depth mapping initial state */
     transform: translateY(0) translateZ(0); 
+    
+    position: relative;
+    margin-top: 14px;
+}
+
+.smart-folder::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -1px;
+    width: 45%;
+    height: 14px;
+    background: rgba(30, 30, 36, 0.95);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
+    border-radius: 12px 14px 0 0;
+    transition: border-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Depth Mapping Hover Effect */
@@ -300,6 +317,10 @@ body {
     transform: translateY(-8px) translateZ(20px);
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--hover-glow-color, rgba(139, 92, 246, 0.15));
+}
+
+.smart-folder:hover::before {
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .folder-header {
@@ -370,7 +391,7 @@ body {
    INSIGHT STREAM (RIGHT SIDEBAR)
    ============================================ */
 .insight-stream {
-    width: 320px;
+    width: 400px;
     flex-shrink: 0;
     background: var(--glass-panel);
     border: 1px solid var(--glass-border);
@@ -486,3 +507,36 @@ body {
         max-height: 400px;
     }
 }
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+    color: rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl, 16px);
+    gap: 8px;
+    min-height: 160px;
+    width: 100%;
+}
+
+.empty-state-card p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .4);
+    margin: 0;
+}
+
+.empty-state-card span {
+    font-size: 0.83rem;
+    color: rgba(255, 255, 255, .25);
+    max-width: 320px;
+}
+

@@ -1,0 +1,49 @@
+# ============================================
+# BMIND USERBOT — Configuration
+# ============================================
+
+# Trigger keywords for the significance filter
+# Messages containing these words will be flagged and forwarded
+trigger_keywords:
+  - tomorrow
+  - deadline
+  - meeting
+  - exam
+  - SAT
+  - due
+  - call
+  - submit
+  - project
+  - presentation
+  - assignment
+  - quiz
+  - test
+  - schedule
+  - urgent
+  - asap
+  - important
+  - reminder
+
+# Blacklisted chat IDs — messages from these chats are ALWAYS ignored
+# Use negative IDs for groups/channels, positive for private chats
+blacklisted_chats: []
+  # - -1001234567890    # e.g., Family Group
+  # - 987654321         # e.g., Private friend chat
+
+# Bmind Ingest API URL (can be overridden by env BMIND_WEBHOOK_URL)
+bmind_webhook_url: "http://localhost:3001/api/ingest"
+
+# Your specific Bmind user ID (required for ingest attribution)
+bmind_user_id: ""
+
+# Rate limiting — protects against Telegram flood limits and webhook overload
+rate_limit:
+  min_interval_seconds: 2        # Minimum gap between consecutive webhook POSTs
+  batch_window_seconds: 10       # Accumulate messages for this long before sending
+  max_batch_size: 5              # Force-flush when batch reaches this size
+
+# Context window — how many previous messages to include for LLM context
+context_depth: 2
+
+# Session storage directory (relative to userbot/)
+session_dir: "sessions"

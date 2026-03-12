@@ -5,7 +5,7 @@
 
 import { Telegraf } from 'telegraf';
 import dotenv from 'dotenv';
-import { insertRawMessage } from '../lib/supabase.js';
+import { insertRawMessage, supabaseAdmin } from '../lib/supabase.js';
 import { anonymize } from '../lib/anonymizer.js';
 import { classifyMessage } from '../lib/groq.js';
 import { processClassification } from '../api/ingest.js';
@@ -18,9 +18,8 @@ let bot = null;
 
 /**
  * Start the Telegram bot listener.
- * @param {string} defaultUserId - The Bmind user to associate messages with
  */
-export function startTelegramWorker(defaultUserId) {
+export function startTelegramWorker() {
     if (!BOT_TOKEN) {
         console.warn('[Telegram] No TELEGRAM_BOT_TOKEN set. Skipping Telegram worker.');
         return null;
@@ -39,9 +38,45 @@ export function startTelegramWorker(defaultUserId) {
 
             console.log(`[Telegram] Message from ${senderName} in "${chatTitle}": ${rawText.substring(0, 50)}...`);
 
+            let userId;
+            const senderUsername = message.from.username?.toLowerCase();
+            
+            if (senderUsername) {
+                try {
+                    const { data: matchedUsers, error } = await supabaseAdmin
+                        .from('users')
+                        .select('id')
+                        .eq('telegram_username', senderUsername)
+                        .limit(1);
+                        
+                    if (!error && matchedUsers && matchedUsers.length > 0) {
+                        userId = matchedUsers[0].id;
+                    }
+                } catch (e) {
+                    // Column might not exist yet, fallback will run
+                    console.log('[Telegram] Could not lookup by username, falling back...');
+                }
+            }
+            
+            if (!userId) {
+                // Fallback for single-user environment
+                const { data: connectedUsers } = await supabaseAdmin.from('users').select('id').eq('telegram_connected', true).limit(1);
+                if (connectedUsers && connectedUsers.length > 0) {
+                    userId = connectedUsers[0].id;
+                } else {
+                    const { data: anyUsers } = await supabaseAdmin.from('users').select('id').limit(1);
+                    if (anyUsers && anyUsers.length > 0) {
+                        userId = anyUsers[0].id;
+                    } else {
+                        console.log('[Telegram] No users found in database to associate with message.');
+                        return;
+                    }
+                }
+            }
+
             // Insert raw message
             const rawMsg = await insertRawMessage({
-                userId: defaultUserId,
+                userId,
                 source: 'telegram',
                 rawText,
                 senderName,
@@ -55,15 +90,30 @@ export function startTelegramWorker(defaultUserId) {
 
             // Process the result
             await processClassification(
-                defaultUserId,
+                userId,
                 rawMsg.id,
                 classification,
                 `telegram:${message.chat.id}:${message.message_id}`
             );
 
             // Optional: confirm receipt in chat
-            if (classification.classification === 'ACTIONABLE') {
-                await ctx.reply(`✅ Bmind detected a task: "${classification.data?.task || rawText.substring(0, 30)}"`);
+            if (['TASK', 'MEETING', 'GOAL'].includes(classification.classification)) {
+                let reply = `✅ Bmind detected a ${classification.classification.toLowerCase()}: "${classification.data?.task || rawText.substring(0, 30)}"`;
+                if (classification.data?.deadline) {
+                    const d = new Date(classification.data.deadline);
+                    reply += `\n📅 Deadline: ${d.toLocaleDateString()} ${d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                }
+                await ctx.reply(reply, { reply_to_message_id: message.message_id });
+            } else if (['LEARNING', 'LEARNING_REQUISITE'].includes(classification.classification)) {
+                let reply = `📚 Bmind analyzed learning topic: "${classification.data?.subject || 'General'}"`;
+                if (classification.data?.deadline) {
+                    const d = new Date(classification.data.deadline);
+                    reply += `\n📅 Exam/Deadline: ${d.toLocaleDateString()}`;
+                }
+                if (classification.data?.description) {
+                    reply += `\n💡 Advice: ${classification.data.description}`;
+                }
+                await ctx.reply(reply, { reply_to_message_id: message.message_id });
             }
 
         } catch (error) {
@@ -71,8 +121,8 @@ export function startTelegramWorker(defaultUserId) {
         }
     });
 
-    // Launch the bot
-    bot.launch()
+    // Launch the bot — drop pending updates to avoid replaying old messages on restart
+    bot.launch({ dropPendingUpdates: true })
         .then(() => console.log('[Telegram] Bot is listening for messages...'))
         .catch(err => console.error('[Telegram] Launch failed:', err.message));
 

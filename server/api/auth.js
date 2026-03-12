@@ -7,7 +7,7 @@
 // ============================================
 
 import { Router } from 'express';
-import { supabase } from '../lib/supabase.js';
+import { supabase, supabaseAdmin } from '../lib/supabase.js';
 
 const router = Router();
 
@@ -23,25 +23,35 @@ router.post('/signup', async (req, res) => {
             return res.status(400).json({ error: 'Email and password are required' });
         }
 
-        const { data, error } = await supabase.auth.signUp({
+        // --- FIX: Use Admin API to create user to bypass email rate limits & verification ---
+        const { data, error } = await supabaseAdmin.auth.admin.createUser({
             email,
             password,
-            options: {
-                data: { display_name: displayName || email.split('@')[0] }
-            }
+            email_confirm: true,
+            user_metadata: { display_name: displayName || email.split('@')[0] }
         });
 
         if (error) {
+            console.error('[Auth] Signup Admin error:', error.message);
             return res.status(400).json({ error: error.message });
         }
 
         // Also insert into our custom users table
         if (data.user) {
-            await supabase.from('users').upsert({
+            await supabaseAdmin.from('users').upsert({
                 id: data.user.id,
                 email: data.user.email,
                 display_name: displayName || email.split('@')[0],
             });
+        }
+
+        // --- FIX: Immediately sign in to get the missing session ---
+        let finalSession = data.session;
+        if (!finalSession) {
+             const signInRes = await supabase.auth.signInWithPassword({ email, password });
+             if (signInRes.data?.session) {
+                 finalSession = signInRes.data.session;
+             }
         }
 
         res.json({
@@ -49,8 +59,13 @@ router.post('/signup', async (req, res) => {
             user: {
                 id: data.user?.id,
                 email: data.user?.email,
+                displayName: displayName || email.split('@')[0],
             },
-            session: data.session,
+            session: {
+                accessToken: finalSession?.access_token,
+                refreshToken: finalSession?.refresh_token,
+                expiresAt: finalSession?.expires_at,
+            },
         });
 
     } catch (error) {
@@ -118,7 +133,7 @@ router.get('/me', async (req, res) => {
         }
 
         // Fetch connection status from our users table
-        const { data: profile } = await supabase
+        const { data: profile } = await supabaseAdmin
             .from('users')
             .select('*')
             .eq('id', user.id)
@@ -158,19 +173,33 @@ router.post('/connect/telegram', async (req, res) => {
             return res.status(400).json({ error: 'userId is required' });
         }
 
-        const { error } = await supabase
+        // Remove '@' if user included it
+        const cleanUsername = telegramUsername.replace(/^@/, '').trim();
+
+        const { error } = await supabaseAdmin
             .from('users')
-            .update({ telegram_connected: true })
+            .update({ 
+                telegram_connected: true,
+                telegram_username: cleanUsername 
+            })
             .eq('id', userId);
 
         if (error) {
             return res.status(500).json({ error: error.message });
         }
 
+        // Get real bot name to show in the success message
+        let botName = '@BmindAssistBot';
+        try {
+            const botRes = await fetch('http://localhost:3001/api/telegram/bot-info');
+            const botData = await botRes.json();
+            if (botData.configured && botData.username) botName = `@${botData.username}`;
+        } catch(e) {}
+
         res.json({
             success: true,
-            message: 'Telegram connected! Add our bot @BmindAssistBot to your groups to start receiving intelligence.',
-            telegramUsername,
+            message: `Telegram connected! Add our bot ${botName} to your groups to start receiving intelligence.`,
+            telegramUsername: cleanUsername,
         });
 
     } catch (error) {
@@ -212,6 +241,42 @@ router.post('/connect/gmail', async (req, res) => {
 
     } catch (error) {
         console.error('[Auth] Connect Gmail error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+/**
+ * POST /api/auth/disconnect/:platform
+ * Body: { userId }
+ * Marks a platform as disconnected for the user
+ */
+router.post('/disconnect/:platform', async (req, res) => {
+    try {
+        const { platform } = req.params;
+        const { userId } = req.body;
+
+        if (!userId) {
+            return res.status(400).json({ error: 'userId is required' });
+        }
+
+        const validPlatforms = ['gmail', 'telegram', 'whatsapp', 'slack'];
+        if (!validPlatforms.includes(platform)) {
+            return res.status(400).json({ error: `Invalid platform: ${platform}` });
+        }
+
+        const { error } = await supabaseAdmin
+            .from('users')
+            .update({ [`${platform}_connected`]: false })
+            .eq('id', userId);
+
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+
+        res.json({ success: true, message: `${platform} disconnected.` });
+
+    } catch (error) {
+        console.error(`[Auth] Disconnect ${req.params.platform} error:`, error.message);
         res.status(500).json({ error: error.message });
     }
 });

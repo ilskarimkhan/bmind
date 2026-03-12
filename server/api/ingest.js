@@ -1,7 +1,7 @@
 // ============================================
-// INGEST API
+// INGEST API v2
 // POST /api/ingest
-// Accepts raw message text, anonymizes, classifies, stores
+// Processes messages with 5-category Thalamus filter
 // ============================================
 
 import { Router } from 'express';
@@ -12,80 +12,120 @@ import { classifyMessage } from '../lib/groq.js';
 const router = Router();
 
 /**
- * Shared function to process a classification result.
- * Used by both the API endpoint and the workers.
+ * Map classification category to task category.
+ */
+function classificationToCategory(classification) {
+    switch (classification) {
+        case 'TASK': case 'ACTIONABLE': return 'task';
+        case 'MEETING': return 'meeting';
+        case 'GOAL': return 'goal';
+        default: return 'task';
+    }
+}
+
+/**
+ * Shared function to process a Thalamus classification result.
+ * Used by both the API endpoint and TDLib/Telegram workers.
  */
 export async function processClassification(userId, rawMessageId, classification, sourceLink) {
     // Mark the raw message as processed
     await markMessageProcessed(rawMessageId, classification.classification);
 
-    if (classification.classification === 'ACTIONABLE' && classification.data) {
-        // Insert as a task
+    const cls = classification.classification;
+    const data = classification.data || {};
+    const confidence = classification.confidence || 'high';
+    const isGhost = confidence === 'low';
+
+    // TASK, MEETING, or GOAL → insert into tasks table
+    if (['TASK', 'MEETING', 'GOAL', 'ACTIONABLE'].includes(cls)) {
         await insertTask({
             userId,
-            title: classification.data.task || 'Untitled Task',
-            deadline: classification.data.deadline || null,
-            priority: classification.data.importance || 3,
-            importance: classification.data.importance || 3,
-            context: classification.data.context || null,
+            title: data.task || 'Untitled Item',
+            deadline: data.deadline || null,
+            priority: data.importance || 3,
+            importance: data.importance || 3,
+            context: data.context || null,
             sourceLink,
             sourceMessageId: rawMessageId,
+            category: classificationToCategory(cls),
+            ghost: isGhost,
+            confidence,
+            stakeholders: data.stakeholders || null,
         });
     }
 
-    if (classification.classification === 'LEARNING_REQUISITE' && classification.data) {
-        // Insert as a mastery resource
+    // LEARNING → insert into mastery_vault
+    if (['LEARNING', 'LEARNING_REQUISITE'].includes(cls)) {
+        const validResourceTypes = ['video', 'article', 'course', 'document', 'advice', 'other'];
+        let rType = (data.type || 'other').toLowerCase();
+        if (!validResourceTypes.includes(rType)) {
+            rType = 'other';
+        }
+
         await insertMasteryResource({
             userId,
             taskId: null,
-            title: classification.data.subject || 'Learning Resource',
+            title: data.title || data.subject || 'Learning Resource',
             url: null,
-            resourceType: 'other',
-            subject: classification.data.subject || null,
-            description: classification.data.query || null,
+            resourceType: rType,
+            subject: data.subject || null,
+            description: data.description || data.query || null,
         });
+
+        // If the learning item has a deadline (e.g. an exam), create a goal/task for it too
+        if (data.deadline && data.task) {
+            await insertTask({
+                userId,
+                title: data.task,
+                deadline: data.deadline,
+                priority: 4, // Exams are usually high priority
+                importance: 4,
+                context: `Auto-generated from learning requirement: ${data.subject || data.task}`,
+                sourceLink,
+                sourceMessageId: rawMessageId,
+                category: 'goal', // Classify exams as goals or tasks
+                ghost: isGhost,
+                confidence,
+                stakeholders: null,
+            });
+        }
     }
 }
 
 /**
  * POST /api/ingest
- * Body: { userId, source, text, senderName?, conversation?, sourceTimestamp? }
+ * Body: { userId, source, text, senderName?, conversation?, sourceTimestamp?, chatId? }
  */
 router.post('/', async (req, res) => {
     try {
-        const { userId, source, text, senderName, conversation, sourceTimestamp } = req.body;
+        const { userId, source, text, senderName, conversation, sourceTimestamp, chatId } = req.body;
 
-        // Validation
         if (!userId || !source || !text) {
-            return res.status(400).json({
-                error: 'Missing required fields: userId, source, text'
-            });
+            return res.status(400).json({ error: 'Missing required fields: userId, source, text' });
         }
 
-        const validSources = ['gmail', 'telegram', 'whatsapp', 'slack'];
+        const validSources = ['gmail', 'telegram', 'whatsapp', 'slack', 'manual'];
         if (!validSources.includes(source)) {
-            return res.status(400).json({
-                error: `Invalid source. Must be one of: ${validSources.join(', ')}`
-            });
+            return res.status(400).json({ error: `Invalid source. Must be one of: ${validSources.join(', ')}` });
         }
 
         // 1. Insert raw message
         const rawMsg = await insertRawMessage({
-            userId,
-            source,
+            userId, source,
             rawText: text,
             senderName: senderName || null,
             conversation: conversation || null,
             sourceTimestamp: sourceTimestamp || null,
+            chatId: chatId || null,
         });
 
         // 2. Anonymize
-        const { anonymized, replacements } = anonymize(text);
+        const { anonymized } = anonymize(text);
 
-        // 3. Classify via Groq
+        // 3. Classify via Groq Thalamus
         const classification = await classifyMessage(anonymized, source);
 
-        // 4. Process classification result (insert task or mastery resource)
+        // 4. Process result
         await processClassification(userId, rawMsg.id, classification, `${source}:manual`);
 
         // 5. Respond
@@ -93,8 +133,9 @@ router.post('/', async (req, res) => {
             success: true,
             messageId: rawMsg.id,
             classification: classification.classification,
+            confidence: classification.confidence,
             data: classification.data,
-            anonymizedPreview: anonymized.substring(0, 200),
+            ghost: classification.confidence === 'low',
         });
 
     } catch (error) {
