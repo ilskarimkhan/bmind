@@ -27,6 +27,7 @@ Thumbs.db
 dist/
 build/
 coverage/
+.next/
 
 # Python UserBot
 userbot/sessions/
@@ -36,3 +37,8 @@ userbot/.env
 __pycache__/
 *.pyc
 *.pyo
+
+# Scratch / Debug files
+fix_app*.js
+st.txt
+server_cmd_error.txt

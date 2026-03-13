@@ -145,12 +145,37 @@
                                 </svg>
                                 Action Feed
                             </h2>
-                            <span class="column-badge rich">Detailed</span>
+                            <span class="column-badge rich">Tasks & Goals</span>
                         </div>
                         <div class="action-list-scrollable" id="action-feed-container">
                             <!-- Populated dynamically by JS -->
                         </div>
                     </div>
+                    
+                    <div class="column-panel" id="messages-panel">
+                        <div class="column-header">
+                            <h2 class="column-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                Messages
+                            </h2>
+                        </div>
+                        <div class="messages-filters" id="messages-network-filters">
+                            <button class="msg-filter-btn active" data-network="all">All</button>
+                            <button class="msg-filter-btn" data-network="telegram">Telegram</button>
+                            <button class="msg-filter-btn" data-network="whatsapp">WhatsApp</button>
+                            <button class="msg-filter-btn" data-network="gmail">Gmail</button>
+                        </div>
+                        <div class="msg-type-filters" id="messages-type-filters">
+                            <button class="msg-type-btn active" data-type="all">All Types</button>
+                            <button class="msg-type-btn" data-type="important">Important</button>
+                            <button class="msg-type-btn" data-type="relevant">Relevant</button>
+                            <button class="msg-type-btn" data-type="spam">Spam</button>
+                        </div>
+                        <div class="messages-list-scrollable" id="messages-feed-container">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
                     <div class="column-panel" id="mastery-panel">
                         <div class="column-header">
                             <h2 class="column-title">

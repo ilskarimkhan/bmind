@@ -251,6 +251,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Messages Panel Filters ---
+    document.querySelectorAll('.msg-filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.msg-filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            if (window.currentMessages) {
+                renderMessagesFeed(window.currentMessages);
+            }
+        });
+    });
+
+    document.querySelectorAll('.msg-type-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.msg-type-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            if (window.currentMessages) {
+                renderMessagesFeed(window.currentMessages);
+            }
+        });
+    });
+
+    // --- Mastery Panel Toggles ---
+    const masteryPanel = document.getElementById('mastery-panel');
+    if (masteryPanel) {
+        masteryPanel.addEventListener('click', (e) => {
+            const item = e.target.closest('.mastery-item');
+            if (!item) return;
+            
+            // Ignore if clicking the start learning button
+            if (e.target.closest('.btn-start-focus')) return;
+
+            const body = item.querySelector('.mastery-body');
+            const icon = item.querySelector('.mastery-icon svg');
+            if (body) {
+                const isHidden = body.style.display === 'none';
+                body.style.display = isHidden ? 'block' : 'none';
+                if (icon) {
+                    icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            }
+        });
+    }
+
     // --- Full Calendar Modal ---
     const calendarModal = document.getElementById('calendar-modal');
     const btnCloseCalendar = document.getElementById('btn-close-calendar');
@@ -310,6 +353,7 @@ async function loadDashboardData() {
 
         const data = await res.json();
         window.currentTasks = data.tasks || [];
+        window.currentMessages = data.recentMessages || [];
         renderDashboard(data);
 
     } catch (err) {
@@ -348,6 +392,9 @@ function renderDashboard(data) {
 
     // --- Action Feed ---
     renderActionFeed(recentMessages, tasks);
+
+    // --- Messages Feed ---
+    renderMessagesFeed(recentMessages);
 
     // --- Mastery Panel ---
     renderMasteryPanel(masteryItems);
@@ -590,6 +637,7 @@ function renderActionFeed(recentMessages, tasks) {
     const seenPreviews = new Set();
     const uniqueMessages = [];
     for (const msg of recentMessages) {
+        if (msg.classification !== 'ACTIONABLE' && msg.classification !== 'LEARNING_REQUISITE') continue;
         const preview = (msg.preview || msg.rawText || '').trim().toLowerCase();
         if (preview && !seenPreviews.has(preview)) {
             seenPreviews.add(preview);
@@ -597,6 +645,14 @@ function renderActionFeed(recentMessages, tasks) {
         } else if (!preview) {
              uniqueMessages.push(msg);
         }
+    }
+
+    if (uniqueMessages.length === 0 && tasks.length === 0) {
+        listEl.innerHTML = `<div class="action-empty">
+            <div style="font-size:2rem;margin-bottom:8px">✅</div>
+            <div style="color:rgba(255,255,255,.4);font-size:.85rem">No action items found.<br>You are all caught up!</div>
+        </div>`;
+        return;
     }
 
     const items = uniqueMessages.slice(0, 15);
@@ -667,6 +723,91 @@ function renderActionFeed(recentMessages, tasks) {
     });
 }
 
+function renderMessagesFeed(messages) {
+    const panel = document.getElementById('messages-panel');
+    if (!panel) return;
+
+    const activeNetwork = document.querySelector('.msg-filter-btn.active')?.dataset.network || 'all';
+    const activeType = document.querySelector('.msg-type-btn.active')?.dataset.type || 'all';
+
+    let listEl = panel.querySelector('.messages-list-scrollable') || panel.querySelector('#messages-feed-container');
+
+    if (!messages || messages.length === 0) {
+        if (listEl) {
+            listEl.innerHTML = `<div class="action-empty">
+                <div style="font-size:2rem;margin-bottom:8px">💬</div>
+                <div style="color:rgba(255,255,255,.4);font-size:.85rem">No messages analyzed yet.</div>
+            </div>`;
+        }
+        return;
+    }
+
+    let filtered = messages.filter(msg => {
+        if (msg.classification === 'ACTIONABLE') return true; // Could optionally hide actionable from messages, but let's keep them if they match filters
+        if (activeNetwork !== 'all' && msg.source !== activeNetwork) return false;
+        
+        if (activeType === 'important' && msg.classification !== 'IMPORTANT') return false;
+        if (activeType === 'relevant' && msg.classification !== 'RELEVANT') return false;
+        if (activeType === 'spam' && msg.classification !== 'NOISE') return false;
+        return true;
+    });
+
+    // Further deduping based on raw content
+    const seenPreviews = new Set();
+    const uniqueFiltered = [];
+    for (const msg of filtered) {
+        const preview = (msg.preview || msg.rawText || '').trim().toLowerCase();
+        if (preview && !seenPreviews.has(preview)) {
+            seenPreviews.add(preview);
+            uniqueFiltered.push(msg);
+        } else if (!preview) {
+             uniqueFiltered.push(msg);
+        }
+    }
+
+    if (uniqueFiltered.length === 0) {
+        if (listEl) {
+            listEl.innerHTML = `<div class="action-empty">
+                <div style="font-size:2rem;margin-bottom:8px">📭</div>
+                <div style="color:rgba(255,255,255,.4);font-size:.85rem">No messages match your filters.</div>
+            </div>`;
+        }
+        return;
+    }
+
+    if (listEl) {
+        listEl.innerHTML = uniqueFiltered.slice(0, 25).map((msg, index) => {
+            const srcMeta = SOURCE_META[msg.source] || SOURCE_META.manual;
+            const time = msg.timestamp ? relativeTime(msg.timestamp) : 'Just now';
+            let classLabel = msg.classification === 'IMPORTANT' ? 'Important' :
+                             msg.classification === 'RELEVANT' ? 'Relevant' :
+                             msg.classification === 'NOISE' ? 'Noise/Spam' :
+                             msg.classification === 'ACTIONABLE' ? 'Actionable' : 'Ignored';
+
+            return `
+            <div class="action-card-pro type-noise integration-tile" style="animation-delay: ${index * 0.05}s">
+                <div class="action-card-header">
+                    <div class="action-source-chip" style="color: ${srcMeta.color}">
+                        <span style="display:flex; align-items:center;">${srcMeta.abbr || '•'}</span>
+                        <span style="color: var(--white);">${escapeHtml(srcMeta.label || '')}</span>
+                    </div>
+                    <span class="action-time-badge">${time}</span>
+                </div>
+                
+                <div class="action-card-body" style="margin-bottom: 8px;">
+                    ${msg.conversation ? `<div class="action-card-title">${escapeHtml(msg.conversation)}</div>` : ''}
+                    <div class="action-card-text" style="font-style: normal;">
+                        "${escapeHtml(msg.preview || msg.rawText || '—')}"
+                    </div>
+                </div>
+                <div class="action-card-footer" style="padding-top: 8px;">
+                    <span class="action-classification-tag">${classLabel}</span>
+                </div>
+            </div>`;
+        }).join('');
+    }
+}
+
 function renderMasteryPanel(masteryItems) {
     const panel = document.getElementById('mastery-panel');
     if (!panel) return;
@@ -689,14 +830,32 @@ function renderMasteryPanel(masteryItems) {
     }
 
     listEl.innerHTML = masteryItems.map(item => `
-        <div class="mastery-item">
-            <div class="mastery-subject" style="color:#818cf8;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;">
-                ${escapeHtml(item.subject || 'General')}
+        <div class="mastery-item integration-tile" style="padding: 16px; margin-bottom: 12px; cursor: pointer; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div class="mastery-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div class="mastery-subject" style="color:#818cf8;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;">
+                        ${escapeHtml(item.subject || 'General')}
+                    </div>
+                    <div class="mastery-title" style="color:#e2e8f0;font-weight:600;font-size:.95rem;margin:4px 0 0 0;">
+                        ${escapeHtml(item.title)}
+                    </div>
+                </div>
+                ${item.description ? `
+                <div class="mastery-icon" style="color: var(--soft-silver); transition: transform 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                ` : ''}
             </div>
-            <div class="mastery-title" style="color:#e2e8f0;font-weight:600;font-size:.9rem;margin:4px 0;">
-                ${escapeHtml(item.title)}
+            ${item.description ? `
+            <div class="mastery-body" style="display: none; margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px;">
+                <div class="mastery-desc" style="color:rgba(255,255,255,.65);font-size:.85rem;line-height:1.5;">
+                    ${escapeHtml(item.description)}
+                </div>
+                <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+                    <button class="btn-start-focus" style="padding: 6px 14px; font-size: 0.8rem; border-radius: 6px;">Start Learning</button>
+                </div>
             </div>
-            ${item.description ? `<div class="mastery-desc" style="color:rgba(255,255,255,.45);font-size:.8rem;line-height:1.4">${escapeHtml(item.description)}</div>` : ''}
+            ` : ''}
         </div>
     `).join('');
 }

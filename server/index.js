@@ -14,9 +14,8 @@ import dashboardRouter from './api/dashboard.js';
 import focusRouter from './api/focus.js';
 import tdlibAuthRouter from './api/tdlib-auth.js';
 
-dotenv.config();
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.join(__dirname, '.env') });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
