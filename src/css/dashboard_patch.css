@@ -1,0 +1,517 @@
+/* ============================================================
+   PATCH: Timeline Rail — proportional tag sizing + click modal
+   ============================================================ */
+
+/* Smaller, proportional timeline tags */
+.timeline-tag {
+    position: absolute;
+    width: 120px !important;          /* was effectively wider due to content */
+    min-height: 40px !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+    font-size: 0.68rem !important;
+    cursor: pointer !important;
+    overflow: hidden;
+    transition: height 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, z-index 0s !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.timeline-tag:hover {
+    height: auto !important;
+    min-height: max-content !important;
+    z-index: 20 !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+}
+
+.tag-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px !important;
+}
+
+.tag-time {
+    font-size: 0.6rem !important;
+    padding: 1px 4px !important;
+    letter-spacing: 0.3px;
+}
+
+.tag-icon {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 0.6rem !important;
+}
+
+.tag-title {
+    font-size: 0.68rem !important;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tag-context {
+    font-size: 0.65rem !important;
+    margin-top: 4px !important;
+    padding-top: 4px !important;
+}
+
+/* Click indicator hint on tag */
+.timeline-tag::after {
+    content: '↗';
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    font-size: 0.55rem;
+    opacity: 0;
+    color: rgba(255,255,255,0.5);
+    transition: opacity 0.2s;
+}
+.timeline-tag:hover::after {
+    opacity: 1;
+}
+
+/* ============================================================
+   UNIVERSAL DETAIL MODAL (Timeline + Mastery deep view)
+   ============================================================ */
+.bmind-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.bmind-modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.bmind-modal {
+    background: linear-gradient(145deg, #1a1a22 0%, #14141c 100%);
+    border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 20px;
+    padding: 32px;
+    width: min(560px, 92vw);
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 30px rgba(99,102,241,0.1);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+    position: relative;
+}
+.bmind-modal-overlay.open .bmind-modal {
+    transform: translateY(0) scale(1);
+}
+
+.bmind-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--soft-silver);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    line-height: 1;
+}
+.bmind-modal-close:hover {
+    background: rgba(255,255,255,0.14);
+    color: var(--white);
+}
+
+.modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+}
+.modal-badge.deadline  { background: rgba(239,68,68,0.15);  color: #f87171; }
+.modal-badge.meeting   { background: rgba(59,130,246,0.15); color: #93c5fd; }
+.modal-badge.study     { background: rgba(34,197,94,0.15);  color: #86efac; }
+.modal-badge.mastery   { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+.modal-badge.task      { background: rgba(245,158,11,0.15); color: #fcd34d; }
+.modal-badge.gym       { background: rgba(239,68,68,0.12);  color: #fca5a5; }
+.modal-badge.flight    { background: rgba(14,165,233,0.15); color: #7dd3fc; }
+.modal-badge.call      { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+.modal-badge.course    { background: rgba(34,197,94,0.15);  color: #86efac; }
+.modal-badge.mission   { background: rgba(245,158,11,0.15); color: #fcd34d; }
+.modal-badge.routine   { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+
+.modal-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.modal-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: var(--soft-silver);
+    background: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.07);
+}
+.modal-meta-chip svg { opacity: 0.6; }
+
+.modal-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 18px 0;
+}
+
+.modal-section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--soft-silver);
+    margin-bottom: 8px;
+}
+
+.modal-context-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid var(--electric-indigo);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.modal-progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+.modal-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--electric-indigo), #a78bfa);
+    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.modal-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+.modal-tag {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(99,102,241,0.1);
+    color: #a5b4fc;
+    border: 1px solid rgba(99,102,241,0.2);
+}
+
+.modal-action-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+}
+.modal-btn {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+.modal-btn.primary {
+    background: var(--electric-indigo);
+    color: #fff;
+}
+.modal-btn.primary:hover {
+    background: var(--electric-indigo-hover);
+    box-shadow: 0 0 18px rgba(99,102,241,0.4);
+}
+.modal-btn.secondary {
+    background: rgba(255,255,255,0.06);
+    color: var(--soft-silver);
+    border-color: rgba(255,255,255,0.1);
+}
+.modal-btn.secondary:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+}
+
+/* ============================================================
+   MASTERY PATH — fix empty space + quick expand + deep modal
+   ============================================================ */
+
+/* Remove the bottom empty space from mastery items */
+.mastery-item {
+    padding-bottom: 0 !important;
+}
+
+/* Quick expand button in mastery card */
+.mastery-quick-expand {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #818cf8;
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 100px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+.mastery-quick-expand:hover {
+    background: rgba(99,102,241,0.18);
+    color: #c7d2fe;
+}
+.mastery-quick-expand svg {
+    transition: transform 0.25s;
+}
+.mastery-quick-expand.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* Quick expand mini panel */
+.mastery-mini-detail {
+    display: none;
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: rgba(99,102,241,0.06);
+    border: 1px solid rgba(99,102,241,0.15);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    animation: fadeInDown 0.2s ease;
+}
+.mastery-mini-detail.open {
+    display: block;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Deep modal link in mastery card */
+.mastery-deep-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: var(--soft-silver);
+    cursor: pointer;
+    margin-top: 6px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.mastery-deep-link:hover { opacity: 1; color: var(--white); }
+
+/* ============================================================
+   ACTION FEED — attractive demo/placeholder cards
+   ============================================================ */
+.af-demo-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(20,20,25,0.5) 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    overflow: hidden;
+    cursor: default;
+}
+.af-demo-card:hover {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(255,255,255,0.13);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Colored left accent */
+.af-demo-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 14px 0 0 14px;
+}
+.af-demo-card.af-course::before   { background: #22c55e; }
+.af-demo-card.af-meeting::before  { background: #3b82f6; }
+.af-demo-card.af-mission::before  { background: #f59e0b; }
+.af-demo-card.af-call::before     { background: #a855f7; }
+.af-demo-card.af-routine::before  { background: #6366f1; }
+.af-demo-card.af-gym::before      { background: #ef4444; }
+.af-demo-card.af-flight::before   { background: #0ea5e9; }
+.af-demo-card.af-deadline::before { background: #ef4444; }
+.af-demo-card.af-goal::before     { background: #f97316; }
+
+/* Card top row */
+.af-demo-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.af-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.af-course  .af-icon-wrap { background: rgba(34,197,94,0.12);  }
+.af-meeting .af-icon-wrap { background: rgba(59,130,246,0.12); }
+.af-mission .af-icon-wrap { background: rgba(245,158,11,0.12); }
+.af-call    .af-icon-wrap { background: rgba(168,85,247,0.12); }
+.af-routine .af-icon-wrap { background: rgba(99,102,241,0.12); }
+.af-gym     .af-icon-wrap { background: rgba(239,68,68,0.12);  }
+.af-flight  .af-icon-wrap { background: rgba(14,165,233,0.12); }
+.af-deadline.af-icon-wrap { background: rgba(239,68,68,0.12);  }
+.af-goal    .af-icon-wrap { background: rgba(249,115,22,0.12); }
+
+.af-demo-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    flex: 1;
+}
+
+.af-demo-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.af-course  .af-demo-badge { background: rgba(34,197,94,0.12);  color: #86efac; }
+.af-meeting .af-demo-badge { background: rgba(59,130,246,0.12); color: #93c5fd; }
+.af-mission .af-demo-badge { background: rgba(245,158,11,0.12); color: #fcd34d; }
+.af-call    .af-demo-badge { background: rgba(168,85,247,0.12); color: #d8b4fe; }
+.af-routine .af-demo-badge { background: rgba(99,102,241,0.12); color: #a5b4fc; }
+.af-gym     .af-demo-badge { background: rgba(239,68,68,0.12);  color: #fca5a5; }
+.af-flight  .af-demo-badge { background: rgba(14,165,233,0.12); color: #7dd3fc; }
+.af-deadline.af-demo-badge { background: rgba(239,68,68,0.12);  color: #fca5a5; }
+.af-goal    .af-demo-badge { background: rgba(249,115,22,0.12); color: #fdba74; }
+
+.af-demo-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.af-demo-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.af-demo-time {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.af-demo-progress {
+    flex: 1;
+    max-width: 120px;
+}
+.af-demo-progress-bar {
+    height: 3px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.07);
+    overflow: hidden;
+}
+.af-demo-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+}
+.af-course  .af-demo-progress-fill { background: #22c55e; }
+.af-meeting .af-demo-progress-fill { background: #3b82f6; }
+.af-mission .af-demo-progress-fill { background: #f59e0b; }
+.af-call    .af-demo-progress-fill { background: #a855f7; }
+.af-routine .af-demo-progress-fill { background: #6366f1; }
+.af-gym     .af-demo-progress-fill { background: #ef4444; }
+.af-flight  .af-demo-progress-fill { background: #0ea5e9; }
+.af-goal    .af-demo-progress-fill { background: #f97316; }
+
+.af-demo-shimmer-label {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 4px;
+}
+
+/* Empty/demo state header notice */
+.af-demo-notice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(99,102,241,0.07);
+    border: 1px dashed rgba(99,102,241,0.2);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+}
+.af-demo-notice svg { color: #6366f1; flex-shrink: 0; }

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bmind — Your intelligent productivity command center. View deadlines, actions, and personalized learning.">
+    <meta name="description"
+        content="Bmind — Your intelligent productivity command center. View deadlines, actions, and personalized learning.">
     <title>Bmind — Dashboard</title>
     <link rel="stylesheet" href="src/css/dashboard.css">
     <link rel="stylesheet" href="src/css/library.css">
     <link rel="stylesheet" href="src/css/archive.css">
     <link rel="stylesheet" href="src/css/connections.css">
+    <link rel="stylesheet" href="src/css/dashboard_patch.css">
+    <link rel="stylesheet" href="src/css/focus.css">
 </head>
+
 <body>
     <div class="dashboard-shell">
 
@@ -22,20 +27,23 @@
 
             <nav class="sidebar-nav">
                 <a href="#pulse" class="sidebar-link active" data-view="view-pulse">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                     </svg>
                     <span>Pulse</span>
                 </a>
                 <a href="#library" class="sidebar-link" data-view="view-library">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                     </svg>
                     <span>Library</span>
                 </a>
                 <a href="#archive" class="sidebar-link" data-view="view-archive">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="21 8 21 21 3 21 3 8" />
                         <rect x="1" y="3" width="22" height="5" />
                         <line x1="10" y1="12" x2="14" y2="12" />
@@ -46,7 +54,8 @@
                 <div class="sidebar-divider"></div>
 
                 <a href="#connections" class="sidebar-link" data-view="view-connections">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                     </svg>
@@ -106,19 +115,26 @@
                     <div class="rail-header">
                         <div style="display: flex; align-items: center; gap: 16px;">
                             <h2 class="rail-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="3" y1="12" x2="21" y2="12"></line>
                                     <line x1="3" y1="6" x2="21" y2="6"></line>
                                     <line x1="3" y1="18" x2="21" y2="18"></line>
                                 </svg>
                                 Timeline Rail
                             </h2>
-                            <div class="rail-controls" style="display: flex; gap: 8px; background: var(--surface-2); padding: 4px; border-radius: 8px; border: 1px solid var(--glass-border);">
-                                <button class="rail-mode-btn active" data-mode="7" style="background: rgba(255,255,255,0.1); border: none; color: var(--white); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s;">7 Days</button>
-                                <button class="rail-mode-btn" data-mode="30" style="background: transparent; border: none; color: var(--soft-silver); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s;">30 Days</button>
+                            <div class="rail-controls"
+                                style="display: flex; gap: 8px; background: var(--surface-2); padding: 4px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                                <button class="rail-mode-btn active" data-mode="7"
+                                    style="background: rgba(255,255,255,0.1); border: none; color: var(--white); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s;">7
+                                    Days</button>
+                                <button class="rail-mode-btn" data-mode="30"
+                                    style="background: transparent; border: none; color: var(--soft-silver); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s;">30
+                                    Days</button>
                             </div>
                         </div>
-                        <button class="btn-full-calendar" style="background: var(--surface-2); color: var(--white); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <button class="btn-full-calendar"
+                            style="background: var(--surface-2); color: var(--white); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                             View Full Calendar
                         </button>
                     </div>
@@ -139,7 +155,8 @@
                     <div class="column-panel" id="actions-panel">
                         <div class="column-header">
                             <h2 class="column-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                                     <polyline points="22 4 12 14.01 9 11.01" />
                                 </svg>
@@ -151,11 +168,14 @@
                             <!-- Populated dynamically by JS -->
                         </div>
                     </div>
-                    
+
                     <div class="column-panel" id="messages-panel">
                         <div class="column-header">
                             <h2 class="column-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
                                 Messages
                             </h2>
                         </div>
@@ -179,7 +199,11 @@
                     <div class="column-panel" id="mastery-panel">
                         <div class="column-header">
                             <h2 class="column-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
                                 Mastery Path
                             </h2>
                             <span class="column-badge rich">Personalized</span>
@@ -222,8 +246,13 @@
             <section class="app-view" id="view-library">
 
                 <div class="global-search-wrapper">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" class="global-search-input" placeholder="Search your thoughts, messages, and lessons...">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="global-search-input"
+                        placeholder="Search your thoughts, messages, and lessons...">
                     <div class="search-cmd-hint">⌘K</div>
                 </div>
 
@@ -239,69 +268,180 @@
                             <div class="learning-carousel">
                                 <div class="learning-card">
                                     <div class="card-thumbnail youtube-thumb">
-                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
                                     </div>
-                                    <div class="card-info"><h3 class="learning-title">Mitosis Explained</h3><span class="learning-source">10 min video</span></div>
-                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 65%;"><span class="progress-text">65%</span></div></div><button class="btn-resume">Resume</button></div>
+                                    <div class="card-info">
+                                        <h3 class="learning-title">Mitosis Explained</h3><span
+                                            class="learning-source">10 min video</span>
+                                    </div>
+                                    <div class="card-progress">
+                                        <div class="progress-ring-container">
+                                            <div class="progress-ring" style="--progress: 65%;"><span
+                                                    class="progress-text">65%</span></div>
+                                        </div><button class="btn-resume">Resume</button>
+                                    </div>
                                 </div>
                                 <div class="learning-card">
                                     <div class="card-thumbnail article-thumb">
-                                        <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                        <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        </svg>
                                     </div>
-                                    <div class="card-info"><h3 class="learning-title">REST API Best Practices</h3><span class="learning-source">Medium Article</span></div>
-                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 30%;"><span class="progress-text">30%</span></div></div><button class="btn-resume">Resume</button></div>
+                                    <div class="card-info">
+                                        <h3 class="learning-title">REST API Best Practices</h3><span
+                                            class="learning-source">Medium Article</span>
+                                    </div>
+                                    <div class="card-progress">
+                                        <div class="progress-ring-container">
+                                            <div class="progress-ring" style="--progress: 30%;"><span
+                                                    class="progress-text">30%</span></div>
+                                        </div><button class="btn-resume">Resume</button>
+                                    </div>
                                 </div>
                                 <div class="learning-card">
                                     <div class="card-thumbnail course-thumb">
-                                        <svg class="course-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                        <svg class="course-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                        </svg>
                                     </div>
-                                    <div class="card-info"><h3 class="learning-title">Chain Rule Deep Dive</h3><span class="learning-source">Coursera Module</span></div>
-                                    <div class="card-progress"><div class="progress-ring-container"><div class="progress-ring" style="--progress: 85%;"><span class="progress-text">85%</span></div></div><button class="btn-resume">Resume</button></div>
+                                    <div class="card-info">
+                                        <h3 class="learning-title">Chain Rule Deep Dive</h3><span
+                                            class="learning-source">Coursera Module</span>
+                                    </div>
+                                    <div class="card-progress">
+                                        <div class="progress-ring-container">
+                                            <div class="progress-ring" style="--progress: 85%;"><span
+                                                    class="progress-text">85%</span></div>
+                                        </div><button class="btn-resume">Resume</button>
+                                    </div>
                                 </div>
                             </div>
                         </section>
 
                         <section class="smart-folders-section">
-                            <div class="section-header-row"><h2 class="section-title">Smart Folders</h2><button class="btn-view-all">View All</button></div>
+                            <div class="section-header-row">
+                                <h2 class="section-title">Smart Folders</h2><button class="btn-view-all">View
+                                    All</button>
+                            </div>
                             <div class="folders-grid">
                                 <div class="smart-folder folder-biology">
-                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v2a8 8 0 0 0 8 8v0a8 8 0 0 1 8 8v2"/><path d="M18 3v2a8 8 0 0 1-8 8v0a8 8 0 0 0-8 8v2"/><line x1="15" y1="5" x2="9" y2="5"/><line x1="17" y1="10" x2="11" y2="10"/><line x1="13" y1="14" x2="7" y2="14"/><line x1="15" y1="19" x2="9" y2="19"/></svg></div><span class="new-insights-badge">3 New Insights</span></div>
-                                    <div class="folder-footer"><h3 class="folder-name">Biology</h3><span class="folder-meta">24 sources synthesized</span></div>
+                                    <div class="folder-header">
+                                        <div class="neon-icon"><svg viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M6 3v2a8 8 0 0 0 8 8v0a8 8 0 0 1 8 8v2" />
+                                                <path d="M18 3v2a8 8 0 0 1-8 8v0a8 8 0 0 0-8 8v2" />
+                                                <line x1="15" y1="5" x2="9" y2="5" />
+                                                <line x1="17" y1="10" x2="11" y2="10" />
+                                                <line x1="13" y1="14" x2="7" y2="14" />
+                                                <line x1="15" y1="19" x2="9" y2="19" />
+                                            </svg></div><span class="new-insights-badge">3 New Insights</span>
+                                    </div>
+                                    <div class="folder-footer">
+                                        <h3 class="folder-name">Biology</h3><span class="folder-meta">24 sources
+                                            synthesized</span>
+                                    </div>
                                 </div>
                                 <div class="smart-folder folder-work">
-                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div><span class="new-insights-badge">1 New Insight</span></div>
-                                    <div class="folder-footer"><h3 class="folder-name">Sprint Planning</h3><span class="folder-meta">18 sources synthesized</span></div>
+                                    <div class="folder-header">
+                                        <div class="neon-icon"><svg viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="20" x2="12" y2="10" />
+                                                <line x1="18" y1="20" x2="18" y2="4" />
+                                                <line x1="6" y1="20" x2="6" y2="16" />
+                                            </svg></div><span class="new-insights-badge">1 New Insight</span>
+                                    </div>
+                                    <div class="folder-footer">
+                                        <h3 class="folder-name">Sprint Planning</h3><span class="folder-meta">18 sources
+                                            synthesized</span>
+                                    </div>
                                 </div>
                                 <div class="smart-folder folder-finance">
-                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div></div>
-                                    <div class="folder-footer"><h3 class="folder-name">Personal Finance</h3><span class="folder-meta">8 sources synthesized</span></div>
+                                    <div class="folder-header">
+                                        <div class="neon-icon"><svg viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M12 1v22" />
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                            </svg></div>
+                                    </div>
+                                    <div class="folder-footer">
+                                        <h3 class="folder-name">Personal Finance</h3><span class="folder-meta">8 sources
+                                            synthesized</span>
+                                    </div>
                                 </div>
                                 <div class="smart-folder folder-general">
-                                    <div class="folder-header"><div class="neon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><span class="new-insights-badge">5 New Insights</span></div>
-                                    <div class="folder-footer"><h3 class="folder-name">General Knowledge</h3><span class="folder-meta">42 sources synthesized</span></div>
+                                    <div class="folder-header">
+                                        <div class="neon-icon"><svg viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                                <polyline points="2 17 12 22 22 17" />
+                                                <polyline points="2 12 12 17 22 12" />
+                                            </svg></div><span class="new-insights-badge">5 New Insights</span>
+                                    </div>
+                                    <div class="folder-footer">
+                                        <h3 class="folder-name">General Knowledge</h3><span class="folder-meta">42
+                                            sources synthesized</span>
+                                    </div>
                                 </div>
                             </div>
                         </section>
                     </div>
 
                     <aside class="sidebar-right insight-stream">
-                        <div class="stream-header"><h2>Insight Stream</h2><span class="live-pulse"></span></div>
+                        <div class="stream-header">
+                            <h2>Insight Stream</h2><span class="live-pulse"></span>
+                        </div>
                         <div class="briefs-feed">
                             <div class="insight-brief brief-violet">
-                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-                                <div class="brief-content"><p class="brief-text">Recap: Your group project chat settled on Friday for the deadline.</p><span class="brief-time">10 mins ago</span></div>
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg></div>
+                                <div class="brief-content">
+                                    <p class="brief-text">Recap: Your group project chat settled on Friday for the
+                                        deadline.</p><span class="brief-time">10 mins ago</span>
+                                </div>
                             </div>
                             <div class="insight-brief brief-mint">
-                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-                                <div class="brief-content"><p class="brief-text">Note extracted from Gmail: Biology Midterm will cover Chapters 4-6 heavily.</p><span class="brief-time">1 hour ago</span></div>
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                    </svg></div>
+                                <div class="brief-content">
+                                    <p class="brief-text">Note extracted from Gmail: Biology Midterm will cover Chapters
+                                        4-6 heavily.</p><span class="brief-time">1 hour ago</span>
+                                </div>
                             </div>
                             <div class="insight-brief brief-amber">
-                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                                <div class="brief-content"><p class="brief-text">Detected a pattern: You typically focus best on complex math tasks before noon.</p><span class="brief-time">2 hours ago</span></div>
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="12" y1="8" x2="12" y2="12" />
+                                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                                    </svg></div>
+                                <div class="brief-content">
+                                    <p class="brief-text">Detected a pattern: You typically focus best on complex math
+                                        tasks before noon.</p><span class="brief-time">2 hours ago</span>
+                                </div>
                             </div>
                             <div class="insight-brief brief-violet">
-                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-                                <div class="brief-content"><p class="brief-text">Action added: Mom invited you to dinner on Sunday night.</p><span class="brief-time">Yesterday</span></div>
+                                <div class="brief-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path
+                                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                    </svg></div>
+                                <div class="brief-content">
+                                    <p class="brief-text">Action added: Mom invited you to dinner on Sunday night.</p>
+                                    <span class="brief-time">Yesterday</span>
+                                </div>
                             </div>
                         </div>
                     </aside>
@@ -345,19 +485,32 @@
                     <div class="timeline-area">
                         <h2 class="section-title">Achievement Stream</h2>
                         <div class="timeline-feed">
-                            <div class="timeline-date-divider"><span>Today</span><div class="divider-line"></div></div>
+                            <div class="timeline-date-divider"><span>Today</span>
+                                <div class="divider-line"></div>
+                            </div>
                             <div class="ghost-card" data-origin-id="t-1">
                                 <div class="ghost-indicator gmail"></div>
-                                <div class="ghost-content"><h3 class="ghost-title">Finalize Biology Paper.</h3><p class="ghost-meta">Completed 2 hours ago • Source: Prof. Chen (Gmail)</p></div>
+                                <div class="ghost-content">
+                                    <h3 class="ghost-title">Finalize Biology Paper.</h3>
+                                    <p class="ghost-meta">Completed 2 hours ago • Source: Prof. Chen (Gmail)</p>
+                                </div>
                             </div>
-                            <div class="timeline-date-divider"><span>Yesterday</span><div class="divider-line"></div></div>
+                            <div class="timeline-date-divider"><span>Yesterday</span>
+                                <div class="divider-line"></div>
+                            </div>
                             <div class="ghost-card" data-origin-id="t-2">
                                 <div class="ghost-indicator telegram"></div>
-                                <div class="ghost-content"><h3 class="ghost-title">Review Mitosis Chapter 4-6</h3><p class="ghost-meta">Completed 16 hours ago • Source: Study Group (Telegram)</p></div>
+                                <div class="ghost-content">
+                                    <h3 class="ghost-title">Review Mitosis Chapter 4-6</h3>
+                                    <p class="ghost-meta">Completed 16 hours ago • Source: Study Group (Telegram)</p>
+                                </div>
                             </div>
                             <div class="ghost-card" data-origin-id="t-3">
                                 <div class="ghost-indicator whatsapp"></div>
-                                <div class="ghost-content"><h3 class="ghost-title">Send outline to Sarah</h3><p class="ghost-meta">Completed 1 day ago • Source: Group Project (WhatsApp)</p></div>
+                                <div class="ghost-content">
+                                    <h3 class="ghost-title">Send outline to Sarah</h3>
+                                    <p class="ghost-meta">Completed 1 day ago • Source: Group Project (WhatsApp)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -367,15 +520,43 @@
                         <div class="trophy-grid">
                             <div class="trophy-card gold-tier" data-origin-id="tr-1">
                                 <div class="trophy-shimmer"></div>
-                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-3-3m0 0l3-3m-3 3h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><h3 class="trophy-title">Biology Paper Final</h3><p class="trophy-date">Oct 24, 2026</p></div></div>
+                                <div class="trophy-content">
+                                    <div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 15l-3-3m0 0l3-3m-3 3h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="trophy-title">Biology Paper Final</h3>
+                                        <p class="trophy-date">Oct 24, 2026</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="trophy-card silver-tier" data-origin-id="tr-2">
                                 <div class="trophy-shimmer"></div>
-                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><h3 class="trophy-title">Sprint Presentation</h3><p class="trophy-date">Oct 20, 2026</p></div></div>
+                                <div class="trophy-content">
+                                    <div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="trophy-title">Sprint Presentation</h3>
+                                        <p class="trophy-date">Oct 20, 2026</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="trophy-card bronze-tier" data-origin-id="tr-3">
                                 <div class="trophy-shimmer"></div>
-                                <div class="trophy-content"><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><h3 class="trophy-title">Read Ch. 4 &amp; 5</h3><p class="trophy-date">Oct 18, 2026</p></div></div>
+                                <div class="trophy-content">
+                                    <div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                            <polyline points="22 4 12 14.01 9 11.01" />
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="trophy-title">Read Ch. 4 &amp; 5</h3>
+                                        <p class="trophy-date">Oct 18, 2026</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -387,20 +568,29 @@
                     <div class="inspector-header">
                         <h2>Origin Story</h2>
                         <button class="btn-close-inspector" id="btn-close-inspector">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
                         </button>
                     </div>
                     <div class="inspector-content">
                         <div class="inspector-meta-box">
-                            <div class="meta-row"><span class="meta-label">Task</span><span class="meta-value" id="inspect-task">Finalize Biology Paper.</span></div>
-                            <div class="meta-row"><span class="meta-label">Processed</span><span class="meta-value">Oct 20, 2026 at 09:14 AM</span></div>
-                            <div class="meta-row"><span class="meta-label">Archived</span><span class="meta-value">Oct 24, 2026 at 02:30 PM</span></div>
+                            <div class="meta-row"><span class="meta-label">Task</span><span class="meta-value"
+                                    id="inspect-task">Finalize Biology Paper.</span></div>
+                            <div class="meta-row"><span class="meta-label">Processed</span><span class="meta-value">Oct
+                                    20, 2026 at 09:14 AM</span></div>
+                            <div class="meta-row"><span class="meta-label">Archived</span><span class="meta-value">Oct
+                                    24, 2026 at 02:30 PM</span></div>
                         </div>
                         <div class="origin-snippet-container">
                             <h3 class="snippet-title">Original Source</h3>
                             <div class="origin-snippet" id="inspect-snippet">
-                                <div class="snippet-header"><span class="snippet-app">Gmail</span><span class="snippet-sender">From: Prof. Chen</span></div>
-                                <p class="snippet-body">"Hello everyone, just a reminder that the final draft of your Biology Paper is due this Friday by 5:00 PM."</p>
+                                <div class="snippet-header"><span class="snippet-app">Gmail</span><span
+                                        class="snippet-sender">From: Prof. Chen</span></div>
+                                <p class="snippet-body">"Hello everyone, just a reminder that the final draft of your
+                                    Biology Paper is due this Friday by 5:00 PM."</p>
                             </div>
                         </div>
                         <div class="inspector-actions">
@@ -417,7 +607,8 @@
             <!-- ============================================================ -->
             <section class="app-view" id="view-connections">
 
-                <div class="connections-container" style="padding: 40px; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
+                <div class="connections-container"
+                    style="padding: 40px; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
                     <header class="connections-header reveal">
                         <h1 class="connections-title">Neural Bridges</h1>
                         <p class="connections-subtitle">Manage your data sources and privacy boundaries.</p>
@@ -427,72 +618,141 @@
                         <button class="integration-tile" data-service="whatsapp" data-status="active">
                             <div class="tile-bg-glow" style="background: var(--whatsapp, #25d366);"></div>
                             <div class="tile-header">
-                                <div class="platform-icon whatsapp"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+                                <div class="platform-icon whatsapp"><svg width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                    </svg></div>
                                 <div class="pulse-orb active" title="Active"></div>
                             </div>
-                            <div class="tile-body"><h3 class="platform-name">WhatsApp</h3><div class="tile-meta"><span class="last-synced">2 minutes ago</span><span class="privacy-badge">High Privacy - Dates Only</span></div></div>
+                            <div class="tile-body">
+                                <h3 class="platform-name">WhatsApp</h3>
+                                <div class="tile-meta"><span class="last-synced">2 minutes ago</span><span
+                                        class="privacy-badge">High Privacy - Dates Only</span></div>
+                            </div>
                         </button>
 
                         <button class="integration-tile" data-service="telegram" data-status="syncing">
                             <div class="tile-bg-glow" style="background: var(--telegram, #2aabee);"></div>
                             <div class="tile-header">
-                                <div class="platform-icon telegram"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+                                <div class="platform-icon telegram"><svg width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                                    </svg></div>
                                 <div class="pulse-orb syncing" title="Syncing"></div>
                             </div>
-                            <div class="tile-body"><h3 class="platform-name">Telegram</h3><div class="tile-meta"><span class="last-synced">Syncing now...</span><span class="privacy-badge">Full Context</span></div></div>
+                            <div class="tile-body">
+                                <h3 class="platform-name">Telegram</h3>
+                                <div class="tile-meta"><span class="last-synced">Syncing now...</span><span
+                                        class="privacy-badge">Full Context</span></div>
+                            </div>
                         </button>
 
                         <button class="integration-tile" data-service="gmail" data-status="warning">
                             <div class="tile-bg-glow" style="background: var(--gmail, #ea4335);"></div>
                             <div class="tile-header">
-                                <div class="platform-icon gmail"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></div>
+                                <div class="platform-icon gmail"><svg width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                                    </svg></div>
                                 <div class="pulse-orb action-required" title="Action Required"></div>
                             </div>
-                            <div class="tile-body"><h3 class="platform-name">Gmail</h3><div class="tile-meta"><span class="last-synced">4 hours ago</span><span class="privacy-badge warning">Re-auth Required</span></div></div>
+                            <div class="tile-body">
+                                <h3 class="platform-name">Gmail</h3>
+                                <div class="tile-meta"><span class="last-synced">4 hours ago</span><span
+                                        class="privacy-badge warning">Re-auth Required</span></div>
+                            </div>
                         </button>
 
                         <button class="integration-tile" data-service="slack" data-status="active">
                             <div class="tile-bg-glow" style="background: var(--slack, #e01e5a);"></div>
                             <div class="tile-header">
-                                <div class="platform-icon slack"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg></div>
+                                <div class="platform-icon slack"><svg width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
+                                    </svg></div>
                                 <div class="pulse-orb active" title="Active"></div>
                             </div>
-                            <div class="tile-body"><h3 class="platform-name">Slack</h3><div class="tile-meta"><span class="last-synced">15 minutes ago</span><span class="privacy-badge">Workspace Limited</span></div></div>
+                            <div class="tile-body">
+                                <h3 class="platform-name">Slack</h3>
+                                <div class="tile-meta"><span class="last-synced">15 minutes ago</span><span
+                                        class="privacy-badge">Workspace Limited</span></div>
+                            </div>
                         </button>
                     </div>
                 </div>
 
-                <div class="security-banner reveal" style="width: 100%; border-radius: 0; box-sizing: border-box; margin-top: auto;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                    <span>All data is processed using local-first anonymization. No raw messages are stored on Bmind servers.</span>
+                <div class="security-banner reveal"
+                    style="width: 100%; border-radius: 0; box-sizing: border-box; margin-top: auto;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>All data is processed using local-first anonymization. No raw messages are stored on Bmind
+                        servers.</span>
                 </div>
 
                 <!-- Connections Side Panel Overlay -->
                 <div class="overlay-backdrop" id="overlay-backdrop"></div>
                 <aside class="config-panel" id="config-panel">
                     <div class="panel-header">
-                        <div class="panel-title-group"><div class="panel-icon" id="panel-icon"></div><h2 class="panel-title" id="panel-title">Configuration</h2></div>
-                        <button class="close-btn" id="close-panel-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                        <div class="panel-title-group">
+                            <div class="panel-icon" id="panel-icon"></div>
+                            <h2 class="panel-title" id="panel-title">Configuration</h2>
+                        </div>
+                        <button class="close-btn" id="close-panel-btn"><svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg></button>
                     </div>
                     <div class="panel-content">
                         <div class="config-group">
-                            <div class="config-label"><span>Temporal Boundary</span><span class="config-value" id="temporal-value">14 days</span></div>
+                            <div class="config-label"><span>Temporal Boundary</span><span class="config-value"
+                                    id="temporal-value">14 days</span></div>
                             <p class="config-desc">How far back should Bmind analyze messages?</p>
                             <div class="range-slider-wrapper">
-                                <input type="range" min="1" max="30" value="14" class="custom-slider" id="temporal-slider">
-                                <div class="slider-ticks"><span>24h</span><span>7d</span><span>14d</span><span>30d</span></div>
+                                <input type="range" min="1" max="30" value="14" class="custom-slider"
+                                    id="temporal-slider">
+                                <div class="slider-ticks">
+                                    <span>24h</span><span>7d</span><span>14d</span><span>30d</span>
+                                </div>
                             </div>
                         </div>
                         <div class="config-group">
                             <div class="config-label">Permitted Scopes</div>
                             <p class="config-desc">Select what intelligence should be extracted.</p>
                             <div class="scopes-list" id="scopes-list">
-                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Deadlines &amp; Events</span><span class="scope-desc">Extract dates and times into Calendar.</span></div></label>
-                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Action Items</span><span class="scope-desc">Create tasks and reminders from requests.</span></div></label>
-                                <label class="scope-item"><input type="checkbox" class="custom-checkbox"><span class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><div class="scope-text"><span class="scope-title">Personal Chat History</span><span class="scope-desc">Generate study cards and contextual memory.</span></div></label>
+                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span
+                                        class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="3">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg></span>
+                                    <div class="scope-text"><span class="scope-title">Deadlines &amp; Events</span><span
+                                            class="scope-desc">Extract dates and times into Calendar.</span></div>
+                                </label>
+                                <label class="scope-item"><input type="checkbox" checked class="custom-checkbox"><span
+                                        class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="3">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg></span>
+                                    <div class="scope-text"><span class="scope-title">Action Items</span><span
+                                            class="scope-desc">Create tasks and reminders from requests.</span></div>
+                                </label>
+                                <label class="scope-item"><input type="checkbox" class="custom-checkbox"><span
+                                        class="checkbox-visual"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="3">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg></span>
+                                    <div class="scope-text"><span class="scope-title">Personal Chat History</span><span
+                                            class="scope-desc">Generate study cards and contextual memory.</span></div>
+                                </label>
                             </div>
                         </div>
-                        <div class="danger-zone"><button class="btn btn-outline disconnect-btn">Disconnect Integration</button></div>
+                        <div class="danger-zone"><button class="btn btn-outline disconnect-btn">Disconnect
+                                Integration</button></div>
                     </div>
                 </aside>
 
@@ -505,7 +765,11 @@
                 <div class="calendar-modal-header">
                     <h2>Full Calendar View</h2>
                     <button class="btn-close-modal" id="btn-close-calendar">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
                     </button>
                 </div>
                 <div class="calendar-modal-body">
@@ -518,9 +782,164 @@
                 </div>
             </div>
         </div>
+
+        <!-- ============================================================ -->
+        <!-- VIEW: FOCUS SESSION OVERLAY                                  -->
+        <!-- ============================================================ -->
+        <div class="focus-session-overlay" id="focus-session-page">
+            <div class="focus-header">
+                <div class="focus-brand">
+                    <div class="focus-brand-icon">B</div>
+                    <span>Deep Work</span>
+                </div>
+                <button class="btn-exit-focus" id="btn-exit-focus">Exit Focus</button>
+            </div>
+            
+            <div class="focus-content-grid">
+                <!-- Column 1: Preparation -->
+                <div class="focus-panel panel-prep">
+                    <h2 class="focus-panel-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Preparing
+                    </h2>
+                    <div class="prep-checklist">
+                        <label class="prep-item">
+                            <input type="checkbox" class="focus-checkbox">
+                            <span class="focus-checkbox-box"></span>
+                            <span class="prep-text">Phone on Do Not Disturb</span>
+                        </label>
+                        <label class="prep-item">
+                            <input type="checkbox" class="focus-checkbox">
+                            <span class="focus-checkbox-box"></span>
+                            <span class="prep-text">Water/Coffee ready</span>
+                        </label>
+                        <label class="prep-item">
+                            <input type="checkbox" class="focus-checkbox">
+                            <span class="focus-checkbox-box"></span>
+                            <span class="prep-text">Clear desk</span>
+                        </label>
+                        <label class="prep-item">
+                            <input type="checkbox" class="focus-checkbox">
+                            <span class="focus-checkbox-box"></span>
+                            <span class="prep-text">Close unrelated tabs</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Column 2: Context/Course (Main) -->
+                <div class="focus-panel panel-course">
+                    <div class="focus-subject-badge" id="fs-subject">BIOLOGY</div>
+                    <h1 class="focus-main-title" id="fs-title">Cellular Mitosis & Data Review</h1>
+                    
+                    <div class="focus-context-box">
+                        <div class="context-label">Context</div>
+                        <p id="fs-context">"Review the mitosis cycle and cell division principles before the midterm."</p>
+                    </div>
+
+                    <div class="focus-timer-container">
+                        <select id="fs-duration-select" class="focus-duration-select">
+                            <option value="15">15 Minutes</option>
+                            <option value="25" selected>25 Minutes (Pomodoro)</option>
+                            <option value="45">45 Minutes (Deep)</option>
+                            <option value="60">60 Minutes (Ultra)</option>
+                            <option value="90">90 Minutes (Block)</option>
+                        </select>
+                        <div class="timer-display" id="fs-timer-preview">25:00</div>
+                        <div class="timer-controls">
+                            <button class="btn-timer-primary" id="btn-begin-deep-work">Begin Deep Work</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Goals -->
+                <div class="focus-panel panel-goals">
+                    <h2 class="focus-panel-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Select Focus Target
+                    </h2>
+                    <div class="goals-checklist" id="fs-goals-list">
+                        <!-- Populated dynamically with tasks -->
+                        <div style="color: rgba(255,255,255,0.5); font-style: italic; font-size: 0.85rem; padding: 10px;">
+                            Select a target task or goal below...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- VIEW: DEEP WORK ACTIVE OVERLAY                               -->
+        <!-- ============================================================ -->
+        <div class="deep-work-active-overlay" id="deep-work-page">
+            <button class="btn-exit-deep-work" id="btn-exit-deep-work">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            
+            <div class="dw-layout">
+                <!-- Left: Immersive Timer Center -->
+                <div class="dw-timer-section">
+                    <div class="dw-active-target">
+                        <div class="dw-target-badge" id="dw-target-badge">DEEP WORK</div>
+                        <h1 class="dw-target-title" id="dw-target-title">Focused Session</h1>
+                    </div>
+                    
+                    <div class="dw-timer-ring-container">
+                        <svg class="dw-timer-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="dw-ring-bg" cx="100" cy="100" r="90" />
+                            <circle class="dw-ring-progress" id="dw-ring-progress" cx="100" cy="100" r="90" />
+                        </svg>
+                        <div class="dw-timer-countdown" id="dw-timer-countdown">25:00</div>
+                    </div>
+                    
+                    <button class="dw-btn-pause" id="dw-btn-pause">Pause Session</button>
+                </div>
+                
+                <!-- Right: Groq AI Intelligence Panel -->
+                <div class="dw-ai-section">
+                    <div class="dw-ai-header">
+                        <div class="dw-ai-icon">🧠</div>
+                        <h2>Bmind Intelligence</h2>
+                    </div>
+                    
+                    <div class="dw-ai-loading" id="dw-ai-loading">
+                        <div class="dw-loader"></div>
+                        <p>Generating personalized deep work strategy...</p>
+                    </div>
+                    
+                    <div class="dw-ai-content" id="dw-ai-content" style="display: none;">
+                        <!-- Micro Wins -->
+                        <div class="dw-ai-card">
+                            <h3><span style="color:#4ade80">✓</span> Micro-Wins to Start Now</h3>
+                            <div class="dw-micro-wins" id="dw-micro-wins">
+                                <!-- injected -->
+                            </div>
+                        </div>
+                        
+                        <!-- Recommended Lessons -->
+                        <div class="dw-ai-card">
+                            <h3><span style="color:#60a5fa">📚</span> Advised Difficulties & Resources</h3>
+                            <div class="dw-lessons" id="dw-lessons">
+                                <!-- injected -->
+                            </div>
+                        </div>
+                        
+                        <!-- Search Queries -->
+                        <div class="dw-ai-card">
+                            <h3><span style="color:#f472b6">🔍</span> Recommended Searches (Copy)</h3>
+                            <div class="dw-queries" id="dw-queries">
+                                <!-- injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <script src="src/js/router.js"></script>
     <script src="src/js/app.js"></script>
+    <script src="src/js/dashboard_patch.js"></script>
 </body>
+
 </html>

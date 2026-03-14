@@ -520,11 +520,14 @@ function renderTimeline(tasks) {
             
         const contextText = task.context || `Source: ${srcMeta.label}`;
 
+        const durationHours = task.durationHours || 1; // Default to 1 hour proportion
+        const heightPct = (durationHours / 24) * 100;
+
         const tag = document.createElement('div');
         tag.className = `timeline-tag ${tagClass}`;
-        // Calculate horizontal position
+        // Calculate horizontal position and proportional height
         const leftOffset = (dayIdx / TOTAL_DAYS) * 100;
-        tag.style.cssText = `left: calc(${leftOffset}% + 12px); top: ${topPct}%;`;
+        tag.style.cssText = `left: calc(${leftOffset}% + 12px); top: ${topPct}%; height: ${heightPct}%;`;
         
         tag.innerHTML = `
             <div class="tag-header">
@@ -659,51 +662,54 @@ function renderActionFeed(recentMessages, tasks) {
     
     listEl.innerHTML = items.map((msg, index) => {
         const srcMeta = SOURCE_META[msg.source] || SOURCE_META.manual;
-        let typeClass = 'type-noise';
-        let classLabel = 'Ignored';
         
-        if (msg.classification === 'ACTIONABLE') {
-            typeClass = 'type-action';
-            classLabel = 'Task Extracted';
-        } else if (msg.classification === 'LEARNING_REQUISITE') {
-            typeClass = 'type-learn';
-            classLabel = 'Learning Path';
+        // Map text content to visual card types dynamically
+        const textToLower = (msg.preview || msg.rawText || '').toLowerCase();
+        let afType = 'af-goal';
+        let afIcon = '🎯';
+        
+        if (msg.classification === 'LEARNING_REQUISITE') {
+           afType = 'af-course'; afIcon = '🧠';
+        } else if (textToLower.includes('meet') || textToLower.includes('call') || textToLower.includes('zoom')) {
+            afType = 'af-meeting'; afIcon = '📅';
+            if (textToLower.includes('call')) { afType = 'af-call'; afIcon = '📞'; }
+        } else if (textToLower.includes('gym') || textToLower.includes('workout') || textToLower.includes('train')) {
+            afType = 'af-gym'; afIcon = '💪';
+        } else if (textToLower.includes('flight') || textToLower.includes('airport')) {
+            afType = 'af-flight'; afIcon = '✈️';
+        } else if (textToLower.includes('routine') || textToLower.includes('habit')) {
+            afType = 'af-routine'; afIcon = '🔄';
+        } else if (msg.classification === 'ACTIONABLE') {
+            afType = 'af-deadline'; afIcon = '⏰';
         }
 
+        let classLabel = msg.classification === 'LEARNING_REQUISITE' ? 'Learning' : 'Action';
         const time = msg.timestamp ? relativeTime(msg.timestamp) : 'Just now';
         const delay = index * 0.1;
-
-        let primaryAction = '<button class="action-btn">Dismiss</button>';
-        if (msg.classification === 'ACTIONABLE') primaryAction = '<button class="action-btn primary">Add to Tasks</button> <button class="action-btn">Dismiss</button>';
-        if (msg.classification === 'LEARNING_REQUISITE') primaryAction = '<button class="action-btn primary">Start Learning</button> <button class="action-btn">Dismiss</button>';
+        const convoTitle = msg.conversation || 'New Action Item';
 
         return `
-        <div class="action-card-pro ${typeClass} integration-tile" style="animation-delay: ${delay}s">
-            <div class="action-card-header">
-                <div class="action-source-chip" style="color: ${srcMeta.color}">
-                    <span style="display:flex; align-items:center;">${srcMeta.abbr || '•'}</span>
-                    <span style="color: var(--white);">${escapeHtml(srcMeta.label || '')}</span>
-                </div>
-                <span class="action-time-badge">${time}</span>
+        <div class="af-demo-card ${afType} integration-tile" style="margin-bottom: 12px; animation-delay: ${delay}s">
+            <div class="af-demo-top">
+                <div class="af-icon-wrap">${afIcon}</div>
+                <div class="af-demo-title">${escapeHtml(convoTitle)}</div>
+                <div class="af-demo-badge">${classLabel}</div>
             </div>
-            
-            <div class="action-card-body">
-                ${msg.conversation ? `<div class="action-card-title">${escapeHtml(msg.conversation)}</div>` : ''}
-                <div class="action-card-text">
-                    "${escapeHtml(msg.preview || msg.rawText || '—')}"
+            <div class="af-demo-desc">"${escapeHtml(msg.preview || msg.rawText || '—')}"</div>
+            <div class="af-demo-footer">
+                ${msg.classification === 'LEARNING_REQUISITE' ? `
+                <div class="af-demo-progress">
+                    <div class="af-demo-progress-bar"><div class="af-demo-progress-fill" style="width: 0%;"></div></div>
                 </div>
-            </div>
-            
-            <div class="action-card-footer">
-                <span class="action-classification-tag">${classLabel}</span>
-                <div class="action-card-actions">
-                    ${primaryAction}
+                ` : ''}
+                <div class="af-demo-time" style="color: ${srcMeta.color}; display: flex; align-items: center; gap: 4px;">
+                    <span>${srcMeta.abbr || '•'}</span> Extracted from ${escapeHtml(srcMeta.label || '')} • ${time}
                 </div>
             </div>
         </div>`;
     }).join('');
 
-    const tiles = listEl.querySelectorAll('.action-card-pro');
+    const tiles = listEl.querySelectorAll('.af-demo-card');
     tiles.forEach(tile => {
         tile.addEventListener('mousemove', (e) => {
             const rect = tile.getBoundingClientRect();
